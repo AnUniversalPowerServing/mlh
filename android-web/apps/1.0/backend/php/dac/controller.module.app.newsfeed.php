@@ -1,0 +1,329 @@
+<?php
+session_start();
+require_once '../api/app.initiator.php';
+require_once '../api/app.database.php';
+require_once '../dal/data.module.app.newsfeed.php';
+require_once '../lal/logic.appIdentity.php';
+
+$logger=Logger::getLogger("controller.module.app.newsfeed.php");
+
+if(isset($_GET["action"])){
+ /* Create NewsFeed ::: START */
+ if($_GET["action"]==='GET_COUNT_LISTOFUNIONSCREATENEWSFEED'){ 
+  if(isset($_GET["user_Id"])){
+    $user_Id = $_GET["user_Id"];
+	$newsfeed = new Newsfeed();
+	$query = $newsfeed->query_count_listOfCommunitiesWhereUserMember($user_Id);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	$jsonData = $database->getJSONData($query);
+	$dejsonData = json_decode($jsonData);
+	echo $dejsonData[0]->{'total_data'};
+  } else { echo 'MISSING_USER_ID'; }
+ }
+ else if($_GET["action"]==='GET_DATA_LISTOFUNIONSCREATENEWSFEED'){
+  if(isset($_GET["user_Id"]) && isset($_GET["limit_start"]) && isset($_GET["limit_end"])){
+    $user_Id = $_GET["user_Id"];
+	$limit_start = $_GET["limit_start"];
+	$limit_end = $_GET["limit_end"];
+	$newsfeed = new Newsfeed();
+	$query = $newsfeed->query_data_listOfCommunitiesWhereUserMember($user_Id,$limit_start,$limit_end);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	echo $database->getJSONData($query);
+  } else { echo 'MISSING_USER_ID'; }
+ }
+ else if($_GET["action"]==='GET_COUNT_LISTOFBRANCHESCREATENEWSFEED'){
+  if(isset($_GET["user_Id"]) && isset($_GET["union_Id"])){
+    $user_Id = $_GET["user_Id"];
+	$union_Id = $_GET["union_Id"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_count_listOfBranchesWhereUserMember($user_Id,$union_Id);
+    $database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	$jsonData = $database->getJSONData($query);
+	$dejsonData = json_decode($jsonData);
+	echo $dejsonData[0]->{'total_data'};
+  } else { 
+    $content='Missing';
+	if(!isset($_GET["user_Id"])){ $content.=' user_Id,'; }
+	if(!isset($_GET["union_Id"])){ $content.=' union_Id,'; }
+	$content=chop($content,',');
+	echo $content;
+  }
+   
+ }
+ else if($_GET["action"]==='GET_DATA_LISTOFBRANCHESCREATENEWSFEED'){
+  if(isset($_GET["user_Id"]) && isset($_GET["union_Id"]) && isset($_GET["limit_start"]) && isset($_GET["limit_end"])){
+    $user_Id = $_GET["user_Id"];
+	$union_Id = $_GET["union_Id"];
+	$limit_start = $_GET["limit_start"];
+	$limit_end = $_GET["limit_end"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_data_listOfBranchesWhereUserMember($user_Id,$union_Id,$limit_start,$limit_end);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	echo $database->getJSONData($query);
+  } else { 
+    $content='Missing';
+	if(!isset($_GET["user_Id"])){ $content.=' user_Id,'; }
+	if(!isset($_GET["union_Id"])){ $content.=' union_Id,'; }
+	if(!isset($_GET["limit_start"])){ $content.=' limit_start,'; }
+	if(!isset($_GET["limit_end"])){ $content.=' limit_end,'; }
+	$content=chop($content,',');
+	echo $content;
+  }
+   
+ }
+ /* Create NewsFeed ::: END */
+ 
+ /* MyNewsList ::: START */
+ else if($_GET["action"]==='GET_COUNT_MYPUBLISHEDNEWS'){
+  if(isset($_GET["user_Id"])){
+    $user_Id = $_GET["user_Id"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_count_getMyPublishedNews($user_Id);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	$jsonData = $database->getJSONData($query);
+	$dejsonData = json_decode($jsonData);
+	echo $dejsonData[0]->{'count(*)'};
+  } else { echo 'Missing user_Id'; }
+ }
+ else if($_GET["action"]==='GET_DATA_MYPUBLISHEDNEWS'){
+  if(isset($_GET["user_Id"]) && isset($_GET["limit_start"]) && isset($_GET["limit_end"])){
+    $user_Id = $_GET["user_Id"];
+	$limit_start = $_GET["limit_start"];
+	$limit_end = $_GET["limit_end"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_data_getMyPublishedNews($user_Id,$limit_start,$limit_end);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	echo $database->getJSONData($query);
+  } else { $content='Missing'; 
+     if(!isset($_GET["user_Id"])){ $content.=' user_Id,'; }
+	 if(!isset($_GET["limit_start"])){ $content.=' limit_start,'; }
+	 if(!isset($_GET["limit_end"])){ $content.=' limit_end,'; }
+	 $content = chop($content,',');
+	 echo $content;
+  }
+ }
+ else if($_GET["action"]==='GET_COUNT_MYPENDINGNEWS'){
+  if(isset($_GET["user_Id"])){
+    $user_Id = $_GET["user_Id"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_count_getMyPendingNews($user_Id);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	$jsonData = $database->getJSONData($query);
+	$dejsonData = json_decode($jsonData);
+	echo $dejsonData[0]->{'count(*)'};
+  } else { echo 'Missing user_Id'; }
+ }
+ else if($_GET["action"]==='GET_DATA_MYPENDINGNEWS'){
+  if(isset($_GET["user_Id"]) && isset($_GET["limit_start"]) && isset($_GET["limit_end"])){
+    $user_Id = $_GET["user_Id"];
+	$limit_start = $_GET["limit_start"];
+	$limit_end = $_GET["limit_end"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_data_getMyPendingNews($user_Id,$limit_start,$limit_end);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	echo $database->getJSONData($query);
+  } else { $content='Missing'; 
+     if(!isset($_GET["user_Id"])){ $content.=' user_Id,'; }
+	 if(!isset($_GET["limit_start"])){ $content.=' limit_start,'; }
+	 if(!isset($_GET["limit_end"])){ $content.=' limit_end,'; }
+	 $content = chop($content,',');
+	 echo $content;
+  }
+ }
+ else if($_GET["action"]==='GET_COUNT_OTHERSREQUESTSNEWS'){
+  if(isset($_GET["user_Id"])){
+    $user_Id = $_GET["user_Id"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_count_getOtherRequestNews($user_Id);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	$jsonData = $database->getJSONData($query);
+	$dejsonData = json_decode($jsonData);
+	echo $dejsonData[0]->{'count(*)'};
+  } else { echo 'Missing user_Id'; }
+ }
+ else if($_GET["action"]==='GET_DATA_OTHERSREQUESTSNEWS'){
+  if(isset($_GET["user_Id"]) && isset($_GET["limit_start"]) && isset($_GET["limit_end"])){
+    $user_Id = $_GET["user_Id"];
+	$limit_start = $_GET["limit_start"];
+	$limit_end = $_GET["limit_end"];
+	$newsfeed = new Newsfeed();
+    $query = $newsfeed->query_data_getOtherRequestNews($user_Id,$limit_start,$limit_end);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	echo $database->getJSONData($query);
+  } else { $content='Missing'; 
+     if(!isset($_GET["user_Id"])){ $content.=' user_Id,'; }
+	 if(!isset($_GET["limit_start"])){ $content.=' limit_start,'; }
+	 if(!isset($_GET["limit_end"])){ $content.=' limit_end,'; }
+	 $content = chop($content,',');
+	 echo $content;
+  }
+ }
+ else if($_GET["action"]==='APPROVE_NEWS_TO_PUBLISH'){
+   if(isset($_GET["rshare_Id"]) && isset($_GET["info_Id"]) && isset($_GET["union_Id"]) && isset($_GET["branch_Id"]) 
+   && isset($_GET["view_members"]) && isset($_GET["view_subscribers"]) && isset($_GET["user_Id"])){
+   $identity = new Identity();
+   $ishare_Id = $identity->newsfeed_ishare_id();
+   $rshare_Id = $_GET["rshare_Id"];
+   $info_Id = $_GET["info_Id"];
+   $union_Id = $_GET["union_Id"];
+   $branch_Id = $_GET["branch_Id"];
+   $view_members = $_GET["view_members"];
+   $view_subscribers = $_GET["view_subscribers"];
+   $biz_Id = '';
+   $approvedBy = $_GET["user_Id"];
+   $newsfeed = new Newsfeed();
+   $query01 = $newsfeed->query_data_addNewsFeedIShare($ishare_Id, $info_Id, $union_Id, $branch_Id, $view_members, 
+                  $view_subscribers, $biz_Id, $approvedBy);
+   $database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+   $query02 = $newsfeed->query_delete_newsFeedRShare($rshare_Id);
+   $query = $query01.$query02;
+   echo $database->addupdateData($query);
+   } else {
+     $content='Missing';
+	 if(isset($_GET["rshare_Id"])){ $content.=' rshare_Id,';  }
+	 if(isset($_GET["info_Id"])){ $content.=' info_Id,'; }
+	 if(isset($_GET["union_Id"])){ $content.=' union_Id,'; }
+	 if(isset($_GET["branch_Id"])){ $content.=' branch_Id,'; }
+     if(isset($_GET["view_members"])){ $content.=' view_members,'; }
+	 if(isset($_GET["view_subscribers"])){ $content.=' view_subscribers,'; }
+	 if(isset($_GET["user_Id"])){ $content.=' user_Id,'; }
+	 $content=chop($content,',');
+	 echo $content;
+   }
+ }
+ /* MyNewsList ::: END */
+ 
+ /* NewsData ::: START */
+ else if($_GET["action"]==='GET_DATA_NEWSDATA'){
+   if(isset($_GET["info_Id"])){
+    $info_Id = $_GET["info_Id"];
+	$newsfeed = new Newsfeed();
+    $query01 = $newsfeed->query_data_getNewsData($info_Id);
+	$database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	echo $database->getJSONData($query01);
+   } else { echo 'MISSING_INFO_ID'; }
+ }
+ /* NewsData ::: END */
+ 
+ else if($_GET["action"]==='GET_COUNT_LATESTNEWS'){
+  if(isset($_GET["user_Id"])){
+   $user_Id = $_GET["user_Id"];
+   $newsfeed = new Newsfeed();
+   $query = $newsfeed->query_count_displayLatestNews($user_Id);
+   $database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+   $jsonData = $database->getJSONData($query);
+   $dejsonData = json_decode($jsonData);
+   echo $dejsonData[0]->{'total_data'};
+  } else {
+      echo 'MISSING_UER_ID';
+  }
+ }
+ else if($_GET["action"]==='GET_DATA_LATESTNEWS'){
+  if(isset($_GET["user_Id"]) && isset($_GET["limit_start"]) && isset($_GET["limit_end"])){
+   $user_Id = $_GET["user_Id"];
+   $limit_start = $_GET["limit_start"];
+   $limit_end = $_GET["limit_end"];
+   $newsfeed = new Newsfeed();
+   $query = $newsfeed->query_data_displayLatestNews($user_Id,$limit_start,$limit_end);
+   $database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+   echo $database->getJSONData($query);
+  } else { 
+     $content='Missing';
+	 if(!isset($_GET["user_Id"])){ $content.=' user_Id,'; }
+	 if(!isset($_GET["limit_start"])){ $content.=' limit_start,'; }
+	 if(!isset($_GET["limit_end"])){ $content.=' limit_end,'; }
+	 $content=chop($content,',');
+     echo $content;
+  }
+ }
+ else { echo 'NO_ACTION'; }
+}
+else if(isset($_POST["action"])){
+ /* Create NewsFeed ::: START */
+ if($_POST["action"]==='WRITE_NEWSFEED'){
+   if(isset($_POST["artTitle"]) && isset($_POST["artShortDesc"]) && isset($_POST["artDesc"]) && 
+	 isset($_POST["artImage"]) && isset($_POST["unionBranchPostShare"]) && isset($_POST["user_Id"])){
+     $identity = new Identity();
+	 $info_Id = $identity->newsfeed_info_id(); // ("'","\'","Hello's world world world!");
+	 $artTitle = str_replace("'","\'",$_POST["artTitle"]);
+	 $artShrtDesc = str_replace("'","\'",$_POST["artShortDesc"]);
+	 $artDesc = str_replace("'","\'",$_POST["artDesc"]);
+	 $images = $_POST["artImage"];
+	 $mediaURL01 = $_POST["mediaURL01"];
+	 $mediaURL02 = $_POST["mediaURL02"];
+	 $mediaURL03 = $_POST["mediaURL03"];
+	 $unionBranchPostShare = $_POST["unionBranchPostShare"];
+	 $status = 'ACTIVE';
+	 $writtenBy = $_POST["user_Id"];
+	 $newsFeed = new Newsfeed();
+	 
+	 $database = new Database($DB_MLHBASIC_SERVERNAME,$DB_MLHBASIC_NAME,$DB_MLHBASIC_USER,$DB_MLHBASIC_PASSWORD);
+	 $query01 = $newsFeed->query_data_addNewsFeedInfo($info_Id, $artTitle, $artShrtDesc, $artDesc, $images, $mediaURL01, 
+						$mediaURL02, $mediaURL03, $status, $writtenBy);
+	 echo $query01.' '.$database->addupdateData($query01);
+	 
+	 print_r($unionBranchPostShare);
+	 foreach($unionBranchPostShare as $union_Id => $unionObject) {
+	  $branches = $unionObject["branches"];
+	  if($branches=='ALL'){
+	     $view_members = $unionObject["viewMembers"];
+		 $view_subscribers = $unionObject["viewSubscribers"];
+		  $approveNewsFeedUnionLevel = $unionObject["approveNewsFeedUnionLevel"];
+	     if($approveNewsFeedUnionLevel=='Y'){
+		   $ishare_Id = $identity->newsfeed_ishare_id();
+	       $branch_Id = 'ALL';
+		   $biz_Id = '';
+		   $approvedBy = $_POST["user_Id"];
+	       $query02 = $newsFeed->query_data_addNewsFeedIShare($ishare_Id, $info_Id, $union_Id, $branch_Id, 
+						$view_members, $view_subscribers, $biz_Id, $approvedBy);
+		   echo $query02.' '.$database->addupdateData($query02);
+		 } else {
+		    $rshare_Id = $identity->newsfeed_rshare_id();
+			$branch_Id = 'ALL';
+		    $biz_Id = '';
+			$query02 = $newsFeed->query_data_addNewsFeedRShare($rshare_Id, $info_Id, $union_Id, $branch_Id, 
+									$view_members, $view_subscribers, $biz_Id);
+			echo $query02.' '.$database->addupdateData($query02);
+		 }
+	  } else {
+	     $branchesInfo = $unionObject["branchesInfo"];
+		 for($index=0;$index<count($branchesInfo);$index++){
+		   $branch_Id = $branchesInfo[$index]["branch_Id"];
+		   $approveNewsFeedBranchLevel = $branchesInfo[$index]["approveNewsFeedBranchLevel"];
+		   $view_members = $branchesInfo[$index]["viewMembers"];
+		   $view_subscribers = $branchesInfo[$index]["viewSubscribers"];
+		   if($approveNewsFeedBranchLevel=='Y'){
+		   $ishare_Id = $identity->newsfeed_ishare_id();
+	       $branch_Id = 'ALL';
+		   $biz_Id = '';
+		   $approvedBy = $_POST["user_Id"];
+	       $query03 = $newsFeed->query_data_addNewsFeedIShare($ishare_Id, $info_Id, $union_Id, $branch_Id, 
+						$view_members, $view_subscribers, $biz_Id, $approvedBy);
+		   echo $database->addupdateData($query03);
+		 } else {
+		    $rshare_Id = $identity->newsfeed_rshare_id();
+			$branch_Id = 'ALL';
+		    $biz_Id = '';
+			$query03 = $newsFeed->query_data_addNewsFeedRShare($rshare_Id, $info_Id, $union_Id, $branch_Id, 
+									$view_members, $view_subscribers, $biz_Id);
+			echo $database->addupdateData($query03);
+		 }
+		 }
+	  }
+	 }
+	 } 
+	 else { $content='Missing';        
+	     if(!isset($_POST["artTitle"])){ $content.=' artTitle,'; }
+		 if(!isset($_POST["artShortDesc"])){ $content.=' artShortDesc,'; }
+		 if(!isset($_POST["artDesc"])){ $content.=' artDesc,'; } 
+		 if(!isset($_POST["artImage"])){ $content.=' artImage,'; }
+		 if(!isset($_POST["unionBranchPostShare"])){ $content.=' unionBranchPostShare,'; }
+		 if(!isset($_POST["user_Id"])){ $content.=' user_Id,'; }
+		 $content=chop($content,',');
+		 echo $content;
+	 }
+   }
+ /* Create NewsFeed ::: END */
+}
+else { echo 'MISSING_ACTION'; }
+?>

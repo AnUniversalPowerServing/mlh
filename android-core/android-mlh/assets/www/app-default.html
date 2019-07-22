@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MyLocalHook</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+<style>
+body { background-color:#fff; }
+</style>
+<script type="text/javascript">
+var Android;
+var AndroidSession;
+function progressLoader(){
+var count=1;
+var progress=false; /* true - 100 to 1 false - 1 to 100 */
+setInterval(function(){ 
+var content='<div id="defaultProgressBar" class="progress-bar progress-bar-danger progress-bar-striped" ';
+    content+='role="progressbar" aria-valuenow="'+count+'" ';
+    content+='aria-valuemin="0" aria-valuemax="100" style="width:'+count+'%">';
+    content+='<span class="sr-only">'+count+'% Complete</span>';
+    content+='</div>';
+document.getElementById("progressDisplay").innerHTML=content;
+if(progress==false){ count++; }
+else {  count--; }
+if(count>1 && count>=100){ progress=true; }
+if(count==1) { progress=false; }
+}, 10);
+}
+
+$(document).ready(function(){
+ progressLoader();
+ if(AndroidSession!==undefined && Android!==undefined) {
+ setTimeout(function(){ 
+  try {
+   var AUTH_USER_ID = AndroidSession.getAndroidSession("AUTH_USER_ID");
+   if(AUTH_USER_ID===null){
+     Android.loadAndroidWebScreen('DEFAULT');
+   } else {
+     var VERSION_NUMBER = Android.getProjectURL()+'apps/'+Android.getVersionNumber()+'/';
+     Android.loadAndroidWebScreen(Android.getHomePage(VERSION_NUMBER));
+   }
+  } catch(err){ alert(err); }
+ },3000);
+ }
+});
+
+</script>
+<style>
+.footer { position: fixed;left: 0;bottom: 40px;width: 100%;text-align: center; }
+.item-1,.item-2,.item-3 { color:#fff;width:60%;font-size: 14px;animation-duration: 20s;
+    font-weight:bold;animation-timing-function: ease-in-out;animation-iteration-count: infinite; }
+
+.item-1{ animation-name: anim-1; }
+.item-2{ animation-name: anim-2; }
+.item-3{ animation-name: anim-3; }
+
+@keyframes anim-1 {
+    0%, 8.3% { left: -100%; opacity: 0; }
+  8.3%,25% { left: 25%; opacity: 1; }
+  33.33%, 100% { left: 110%; opacity: 0; }
+}
+
+@keyframes anim-2 {
+	0%, 33.33% { left: -100%; opacity: 0; }
+  41.63%, 58.29% { left: 25%; opacity: 1; }
+  66.66%, 100% { left: 110%; opacity: 0; }
+}
+
+@keyframes anim-3 {
+	0%, 66.66% { left: -100%; opacity: 0; }
+  74.96%, 91.62% { left: 25%; opacity: 1; }
+  100% { left: 110%; opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="container-fluid">
+   <div align="center" class="col-md-12 col-sm-12 col-xs-12">
+     
+   </div>
+</div>
+
+<div align="center" style="margin-top:60px;">
+   <div align="center" style="margin-top:160px;">
+   <div class="col-md-4 col-sm-3 col-xs-1"></div>
+   <div class="col-md-4 col-sm-6 col-xs-10">
+   
+     <div style="margin-bottom:35px;">
+     <img src="images/logo-flat.png" style="width:130px;height:auto;"/>
+     </div>
+     
+     <div id="progressDisplay" class="progress" style="height:5px;"></div>
+    
+   </div>
+   <div class="col-md-4 col-sm-3 col-xs-1"></div>
+   </div>
+</div>
+<div class="footer">
+
+</div>
+</body>
+</html>

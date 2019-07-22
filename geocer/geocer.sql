@@ -1,0 +1,767 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Jun 02, 2019 at 05:43 PM
+-- Server version: 5.5.24-log
+-- PHP Version: 5.4.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `geocer`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE IF NOT EXISTS `countries` (
+  `country_Id` varchar(4) NOT NULL,
+  `eng_countryName` varchar(100) NOT NULL,
+  `phonecode` varchar(8) NOT NULL,
+  `currency` varchar(100) NOT NULL,
+  PRIMARY KEY (`country_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`country_Id`, `eng_countryName`, `phonecode`, `currency`) VALUES
+('C001', 'India', '+91', 'India Rupee');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `levels`
+--
+
+CREATE TABLE IF NOT EXISTS `levels` (
+  `areaType` varchar(5) NOT NULL,
+  `level01` varchar(30) NOT NULL,
+  `level02` varchar(30) NOT NULL,
+  `level03` varchar(30) NOT NULL,
+  PRIMARY KEY (`areaType`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `levels`
+--
+
+INSERT INTO `levels` (`areaType`, `level01`, `level02`, `level03`) VALUES
+('RURAL', 'Zilla Parishad', 'Mandal Panchayat', 'Grama Panchayat'),
+('URBAN', 'Municipal Corporation', 'Municipality', 'Nagar Panchayat');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locations`
+--
+
+CREATE TABLE IF NOT EXISTS `locations` (
+  `location_Id` varchar(12) NOT NULL,
+  `state_Id` varchar(8) NOT NULL,
+  `electionType` varchar(100) NOT NULL,
+  `eng_locationName` varchar(100) NOT NULL,
+  PRIMARY KEY (`location_Id`),
+  KEY `state_Id` (`state_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`location_Id`, `state_Id`, `electionType`, `eng_locationName`) VALUES
+('LOC100000000', 'S4540201', 'PARLIAMENT', 'Araku'),
+('LOC100000001', 'S4540201', 'PARLIAMENT', 'Srikakulam'),
+('LOC100000002', 'S4540201', 'PARLIAMENT', 'Vizianagaram'),
+('LOC100000003', 'S4540201', 'PARLIAMENT', 'Visakhapatnam'),
+('LOC100000004', 'S4540201', 'PARLIAMENT', 'Anakapalli'),
+('LOC100000005', 'S4540201', 'PARLIAMENT', 'Kakinada'),
+('LOC100000006', 'S4540201', 'PARLIAMENT', 'Amalapuram'),
+('LOC100000007', 'S4540201', 'PARLIAMENT', 'Rajahmundry'),
+('LOC100000008', 'S4540201', 'PARLIAMENT', 'Narasapuram'),
+('LOC100000009', 'S4540201', 'PARLIAMENT', 'Eluru'),
+('LOC100000010', 'S4540201', 'PARLIAMENT', 'Machilipatnam'),
+('LOC100000011', 'S4540201', 'PARLIAMENT', 'Vijayawada'),
+('LOC100000012', 'S4540201', 'PARLIAMENT', 'Guntur'),
+('LOC100000013', 'S4540201', 'PARLIAMENT', 'Narasaraopet'),
+('LOC100000014', 'S4540201', 'PARLIAMENT', 'Bapatla'),
+('LOC100000015', 'S4540201', 'PARLIAMENT', 'Ongole'),
+('LOC100000016', 'S4540201', 'PARLIAMENT', 'Nandyal'),
+('LOC100000017', 'S4540201', 'PARLIAMENT', 'Kurnool'),
+('LOC100000018', 'S4540201', 'PARLIAMENT', 'Anantapur'),
+('LOC100000019', 'S4540201', 'PARLIAMENT', 'Hindupur'),
+('LOC100000020', 'S4540201', 'PARLIAMENT', 'Kadapa'),
+('LOC100000021', 'S4540201', 'PARLIAMENT', 'Nellore'),
+('LOC100000022', 'S4540201', 'PARLIAMENT', 'Tirupati'),
+('LOC100000023', 'S4540201', 'PARLIAMENT', 'Rajampet'),
+('LOC100000024', 'S4540201', 'PARLIAMENT', 'Chittoor'),
+('LOC100000025', 'S5869683', 'PARLIAMENT', 'Arunachal West'),
+('LOC100000026', 'S5869683', 'PARLIAMENT', 'Arunachal East'),
+('LOC100000027', 'S4533148', 'PARLIAMENT', 'Karimganj'),
+('LOC100000028', 'S4533148', 'PARLIAMENT', 'Silchar'),
+('LOC100000029', 'S4533148', 'PARLIAMENT', 'Autonomous District'),
+('LOC100000030', 'S4533148', 'PARLIAMENT', 'Dhubri'),
+('LOC100000031', 'S4533148', 'PARLIAMENT', 'Kokrajhar'),
+('LOC100000032', 'S4533148', 'PARLIAMENT', 'Barpeta'),
+('LOC100000033', 'S4533148', 'PARLIAMENT', 'Gauhati'),
+('LOC100000034', 'S4533148', 'PARLIAMENT', 'Mangaldoi'),
+('LOC100000035', 'S4533148', 'PARLIAMENT', 'Tezpur'),
+('LOC100000036', 'S4533148', 'PARLIAMENT', 'Nowgong'),
+('LOC100000037', 'S4533148', 'PARLIAMENT', 'Kaliabor'),
+('LOC100000038', 'S4533148', 'PARLIAMENT', 'Jorhat'),
+('LOC100000039', 'S4533148', 'PARLIAMENT', 'Dibrugarh'),
+('LOC100000040', 'S4533148', 'PARLIAMENT', 'Lakhimpur'),
+('LOC100000041', 'S6489800', 'PARLIAMENT', 'Valmiki Nagar'),
+('LOC100000042', 'S6489800', 'PARLIAMENT', 'Paschim Champaran'),
+('LOC100000043', 'S6489800', 'PARLIAMENT', 'Purvi Champaran'),
+('LOC100000044', 'S6489800', 'PARLIAMENT', 'Sheohar'),
+('LOC100000045', 'S6489800', 'PARLIAMENT', 'Sitamarhi'),
+('LOC100000046', 'S6489800', 'PARLIAMENT', 'Madhubani'),
+('LOC100000047', 'S6489800', 'PARLIAMENT', 'Jhanjharpur'),
+('LOC100000048', 'S6489800', 'PARLIAMENT', 'Supaul'),
+('LOC100000049', 'S6489800', 'PARLIAMENT', 'Araria'),
+('LOC100000050', 'S6489800', 'PARLIAMENT', 'Kishanganj'),
+('LOC100000051', 'S6489800', 'PARLIAMENT', 'Katihar'),
+('LOC100000052', 'S6489800', 'PARLIAMENT', 'Purnia'),
+('LOC100000053', 'S6489800', 'PARLIAMENT', 'Madhepura'),
+('LOC100000054', 'S6489800', 'PARLIAMENT', 'Darbhanga'),
+('LOC100000055', 'S6489800', 'PARLIAMENT', 'Muzaffarpur'),
+('LOC100000056', 'S6489800', 'PARLIAMENT', 'Vaishali'),
+('LOC100000057', 'S6489800', 'PARLIAMENT', 'Gopalganj'),
+('LOC100000058', 'S6489800', 'PARLIAMENT', 'Siwan'),
+('LOC100000059', 'S6489800', 'PARLIAMENT', 'Maharajganj'),
+('LOC100000060', 'S6489800', 'PARLIAMENT', 'Saran'),
+('LOC100000061', 'S6489800', 'PARLIAMENT', 'Hajipur'),
+('LOC100000062', 'S6489800', 'PARLIAMENT', 'Ujiarpur'),
+('LOC100000063', 'S6489800', 'PARLIAMENT', 'Samastipur'),
+('LOC100000064', 'S6489800', 'PARLIAMENT', 'Begusarai'),
+('LOC100000065', 'S6489800', 'PARLIAMENT', 'Khagaria'),
+('LOC100000066', 'S6489800', 'PARLIAMENT', 'Bhagalpur'),
+('LOC100000067', 'S6489800', 'PARLIAMENT', 'Banka'),
+('LOC100000068', 'S6489800', 'PARLIAMENT', 'Munger'),
+('LOC100000069', 'S6489800', 'PARLIAMENT', 'Nalanda'),
+('LOC100000070', 'S6489800', 'PARLIAMENT', 'Patna Sahib'),
+('LOC100000071', 'S6489800', 'PARLIAMENT', 'Pataliputra'),
+('LOC100000072', 'S6489800', 'PARLIAMENT', 'Arrah'),
+('LOC100000073', 'S6489800', 'PARLIAMENT', 'Buxar'),
+('LOC100000074', 'S6489800', 'PARLIAMENT', 'Sasaram'),
+('LOC100000075', 'S6489800', 'PARLIAMENT', 'Karakat'),
+('LOC100000076', 'S6489800', 'PARLIAMENT', 'Jahanabad'),
+('LOC100000077', 'S6489800', 'PARLIAMENT', 'Aurangabad'),
+('LOC100000078', 'S6489800', 'PARLIAMENT', 'Gaya'),
+('LOC100000079', 'S6489800', 'PARLIAMENT', 'Nawada'),
+('LOC100000080', 'S6489800', 'PARLIAMENT', 'Jamui'),
+('LOC100000081', 'S1292588', 'PARLIAMENT', 'Sarguja'),
+('LOC100000082', 'S1292588', 'PARLIAMENT', 'Raigarh'),
+('LOC100000083', 'S1292588', 'PARLIAMENT', 'Janjgir-Champa'),
+('LOC100000084', 'S1292588', 'PARLIAMENT', 'Korba'),
+('LOC100000085', 'S1292588', 'PARLIAMENT', 'Bilaspur'),
+('LOC100000086', 'S1292588', 'PARLIAMENT', 'Rajnandgaon'),
+('LOC100000087', 'S1292588', 'PARLIAMENT', 'Durg'),
+('LOC100000088', 'S1292588', 'PARLIAMENT', 'Raipur'),
+('LOC100000089', 'S1292588', 'PARLIAMENT', 'Mahasamund'),
+('LOC100000090', 'S1292588', 'PARLIAMENT', 'Bastar'),
+('LOC100000091', 'S1292588', 'PARLIAMENT', 'Kanker'),
+('LOC100000092', 'S3546549', 'PARLIAMENT', 'North Goa'),
+('LOC100000093', 'S3546549', 'PARLIAMENT', 'South Goa'),
+('LOC100000094', 'S2978244', 'PARLIAMENT', 'Kachchh'),
+('LOC100000095', 'S2978244', 'PARLIAMENT', 'Banaskantha'),
+('LOC100000096', 'S2978244', 'PARLIAMENT', 'Patan'),
+('LOC100000097', 'S2978244', 'PARLIAMENT', 'Mahesana'),
+('LOC100000098', 'S2978244', 'PARLIAMENT', 'Sabarkantha'),
+('LOC100000099', 'S2978244', 'PARLIAMENT', 'Gandhinagar'),
+('LOC100000100', 'S2978244', 'PARLIAMENT', 'Ahmedabad East'),
+('LOC100000101', 'S2978244', 'PARLIAMENT', 'Ahmedabad West'),
+('LOC100000102', 'S2978244', 'PARLIAMENT', 'Surendranagar'),
+('LOC100000103', 'S2978244', 'PARLIAMENT', 'Rajkot'),
+('LOC100000104', 'S2978244', 'PARLIAMENT', 'Porbandar'),
+('LOC100000105', 'S2978244', 'PARLIAMENT', 'Jamnagar'),
+('LOC100000106', 'S2978244', 'PARLIAMENT', 'Junagadh'),
+('LOC100000107', 'S2978244', 'PARLIAMENT', 'Amreli'),
+('LOC100000108', 'S2978244', 'PARLIAMENT', 'Bhavnagar'),
+('LOC100000109', 'S2978244', 'PARLIAMENT', 'Anand'),
+('LOC100000110', 'S2978244', 'PARLIAMENT', 'Kheda'),
+('LOC100000111', 'S2978244', 'PARLIAMENT', 'Panchmahal'),
+('LOC100000112', 'S2978244', 'PARLIAMENT', 'Dahod'),
+('LOC100000113', 'S2978244', 'PARLIAMENT', 'Vadodara'),
+('LOC100000114', 'S2978244', 'PARLIAMENT', 'Chhota Udaipur'),
+('LOC100000115', 'S2978244', 'PARLIAMENT', 'Bharuch'),
+('LOC100000116', 'S2978244', 'PARLIAMENT', 'Bardoli'),
+('LOC100000117', 'S2978244', 'PARLIAMENT', 'Surat'),
+('LOC100000118', 'S2978244', 'PARLIAMENT', 'Navsari'),
+('LOC100000119', 'S2978244', 'PARLIAMENT', 'Valsad'),
+('LOC100000120', 'S6449652', 'PARLIAMENT', 'Ambala'),
+('LOC100000121', 'S6449652', 'PARLIAMENT', 'Kurukshetra'),
+('LOC100000122', 'S6449652', 'PARLIAMENT', 'Sirsa'),
+('LOC100000123', 'S6449652', 'PARLIAMENT', 'Hissar'),
+('LOC100000124', 'S6449652', 'PARLIAMENT', 'Karnal'),
+('LOC100000125', 'S6449652', 'PARLIAMENT', 'Sonepat'),
+('LOC100000126', 'S6449652', 'PARLIAMENT', 'Rohtak'),
+('LOC100000127', 'S6449652', 'PARLIAMENT', 'Bhiwani-Mahendragarh'),
+('LOC100000128', 'S6449652', 'PARLIAMENT', 'Gurgaon'),
+('LOC100000129', 'S6449652', 'PARLIAMENT', 'Faridabad'),
+('LOC100000130', 'S4138726', 'PARLIAMENT', 'Kangra'),
+('LOC100000131', 'S4138726', 'PARLIAMENT', 'Mandi'),
+('LOC100000132', 'S4138726', 'PARLIAMENT', 'Hamirpur'),
+('LOC100000133', 'S4138726', 'PARLIAMENT', 'Shimla'),
+('LOC100000134', 'S7664387', 'PARLIAMENT', 'Baramulla'),
+('LOC100000135', 'S7664387', 'PARLIAMENT', 'Srinagar'),
+('LOC100000136', 'S7664387', 'PARLIAMENT', 'Anantnag'),
+('LOC100000137', 'S7664387', 'PARLIAMENT', 'Ladakh'),
+('LOC100000138', 'S7664387', 'PARLIAMENT', 'Udhampur'),
+('LOC100000139', 'S7664387', 'PARLIAMENT', 'Jammu'),
+('LOC100000140', 'S1267089', 'PARLIAMENT', 'Rajmahal'),
+('LOC100000141', 'S1267089', 'PARLIAMENT', 'Dumka'),
+('LOC100000142', 'S1267089', 'PARLIAMENT', 'Godda'),
+('LOC100000143', 'S1267089', 'PARLIAMENT', 'Chatra'),
+('LOC100000144', 'S1267089', 'PARLIAMENT', 'Kodarma'),
+('LOC100000145', 'S1267089', 'PARLIAMENT', 'Giridih'),
+('LOC100000146', 'S1267089', 'PARLIAMENT', 'Dhanbad'),
+('LOC100000147', 'S1267089', 'PARLIAMENT', 'Ranchi'),
+('LOC100000148', 'S1267089', 'PARLIAMENT', 'Jamshedpur'),
+('LOC100000149', 'S1267089', 'PARLIAMENT', 'Singhbhum'),
+('LOC100000150', 'S1267089', 'PARLIAMENT', 'Khunti'),
+('LOC100000151', 'S1267089', 'PARLIAMENT', 'Lohardaga'),
+('LOC100000152', 'S1267089', 'PARLIAMENT', 'Palamau'),
+('LOC100000153', 'S1267089', 'PARLIAMENT', 'Hazaribagh'),
+('LOC100000154', 'S7156032', 'PARLIAMENT', 'Chikkodi'),
+('LOC100000155', 'S7156032', 'PARLIAMENT', 'Belgaum'),
+('LOC100000156', 'S7156032', 'PARLIAMENT', 'Bagalkot'),
+('LOC100000157', 'S7156032', 'PARLIAMENT', 'Bijapur'),
+('LOC100000158', 'S7156032', 'PARLIAMENT', 'Gulbarga'),
+('LOC100000159', 'S7156032', 'PARLIAMENT', 'Raichur'),
+('LOC100000160', 'S7156032', 'PARLIAMENT', 'Bidar'),
+('LOC100000161', 'S7156032', 'PARLIAMENT', 'Koppal'),
+('LOC100000162', 'S7156032', 'PARLIAMENT', 'Bellary'),
+('LOC100000163', 'S7156032', 'PARLIAMENT', 'Haveri'),
+('LOC100000164', 'S7156032', 'PARLIAMENT', 'Dharwad'),
+('LOC100000165', 'S7156032', 'PARLIAMENT', 'Uttara Kannada'),
+('LOC100000166', 'S7156032', 'PARLIAMENT', 'Davanagere'),
+('LOC100000167', 'S7156032', 'PARLIAMENT', 'Shimoga'),
+('LOC100000168', 'S7156032', 'PARLIAMENT', 'Udupi Chikmagalur'),
+('LOC100000169', 'S7156032', 'PARLIAMENT', 'Hassan'),
+('LOC100000170', 'S7156032', 'PARLIAMENT', 'Dakshina Kannada'),
+('LOC100000171', 'S7156032', 'PARLIAMENT', 'Chitradurga'),
+('LOC100000172', 'S7156032', 'PARLIAMENT', 'Tumkur'),
+('LOC100000173', 'S7156032', 'PARLIAMENT', 'Mandya'),
+('LOC100000174', 'S7156032', 'PARLIAMENT', 'Mysore'),
+('LOC100000175', 'S7156032', 'PARLIAMENT', 'Chamarajanagar'),
+('LOC100000176', 'S7156032', 'PARLIAMENT', 'Bangalore Rural'),
+('LOC100000177', 'S7156032', 'PARLIAMENT', 'Bangalore North'),
+('LOC100000178', 'S7156032', 'PARLIAMENT', 'Bangalore Central'),
+('LOC100000179', 'S7156032', 'PARLIAMENT', 'Bangalore South'),
+('LOC100000180', 'S7156032', 'PARLIAMENT', 'Chikballapur'),
+('LOC100000181', 'S7156032', 'PARLIAMENT', 'Kolar'),
+('LOC100000182', 'S8356391', 'PARLIAMENT', 'Kasaragod'),
+('LOC100000183', 'S8356391', 'PARLIAMENT', 'Kannur'),
+('LOC100000184', 'S8356391', 'PARLIAMENT', 'Vatakara'),
+('LOC100000185', 'S8356391', 'PARLIAMENT', 'Wayanad'),
+('LOC100000186', 'S8356391', 'PARLIAMENT', 'Kozhikode'),
+('LOC100000187', 'S8356391', 'PARLIAMENT', 'Malappuram'),
+('LOC100000188', 'S8356391', 'PARLIAMENT', 'Ponnani'),
+('LOC100000189', 'S8356391', 'PARLIAMENT', 'Palakkad'),
+('LOC100000190', 'S8356391', 'PARLIAMENT', 'Alathur'),
+('LOC100000191', 'S8356391', 'PARLIAMENT', 'Thrissur'),
+('LOC100000192', 'S8356391', 'PARLIAMENT', 'Chalakudy'),
+('LOC100000193', 'S8356391', 'PARLIAMENT', 'Ernakulam'),
+('LOC100000194', 'S8356391', 'PARLIAMENT', 'Idukki'),
+('LOC100000195', 'S8356391', 'PARLIAMENT', 'Kottayam'),
+('LOC100000196', 'S8356391', 'PARLIAMENT', 'Alappuzha'),
+('LOC100000197', 'S8356391', 'PARLIAMENT', 'Mavelikara'),
+('LOC100000198', 'S8356391', 'PARLIAMENT', 'Pathanamthitta'),
+('LOC100000199', 'S8356391', 'PARLIAMENT', 'Kollam'),
+('LOC100000200', 'S8356391', 'PARLIAMENT', 'Attingal'),
+('LOC100000201', 'S8356391', 'PARLIAMENT', 'Thiruvananthapuram'),
+('LOC100000202', 'S1278754', 'PARLIAMENT', 'Morena'),
+('LOC100000203', 'S1278754', 'PARLIAMENT', 'Bhind'),
+('LOC100000204', 'S1278754', 'PARLIAMENT', 'Gwalior'),
+('LOC100000205', 'S1278754', 'PARLIAMENT', 'Guna'),
+('LOC100000206', 'S1278754', 'PARLIAMENT', 'Sagar'),
+('LOC100000207', 'S1278754', 'PARLIAMENT', 'Tikamgarh'),
+('LOC100000208', 'S1278754', 'PARLIAMENT', 'Damoh'),
+('LOC100000209', 'S1278754', 'PARLIAMENT', 'Khajuraho'),
+('LOC100000210', 'S1278754', 'PARLIAMENT', 'Satna'),
+('LOC100000211', 'S1278754', 'PARLIAMENT', 'Rewa'),
+('LOC100000212', 'S1278754', 'PARLIAMENT', 'Sidhi'),
+('LOC100000213', 'S1278754', 'PARLIAMENT', 'Shahdol'),
+('LOC100000214', 'S1278754', 'PARLIAMENT', 'Jabalpur'),
+('LOC100000215', 'S1278754', 'PARLIAMENT', 'Mandla'),
+('LOC100000216', 'S1278754', 'PARLIAMENT', 'Balaghat'),
+('LOC100000217', 'S1278754', 'PARLIAMENT', 'Chhindwara'),
+('LOC100000218', 'S1278754', 'PARLIAMENT', 'Hoshangabad'),
+('LOC100000219', 'S1278754', 'PARLIAMENT', 'Vidisha'),
+('LOC100000220', 'S1278754', 'PARLIAMENT', 'Bhopal'),
+('LOC100000221', 'S1278754', 'PARLIAMENT', 'Rajgarh'),
+('LOC100000222', 'S1278754', 'PARLIAMENT', 'Dewas'),
+('LOC100000223', 'S1278754', 'PARLIAMENT', 'Ujjain'),
+('LOC100000224', 'S1278754', 'PARLIAMENT', 'Mandsaur'),
+('LOC100000225', 'S1278754', 'PARLIAMENT', 'Ratlam'),
+('LOC100000226', 'S1278754', 'PARLIAMENT', 'Dhar'),
+('LOC100000227', 'S1278754', 'PARLIAMENT', 'Indore'),
+('LOC100000228', 'S1278754', 'PARLIAMENT', 'Khargone'),
+('LOC100000229', 'S1278754', 'PARLIAMENT', 'Khandwa'),
+('LOC100000230', 'S1278754', 'PARLIAMENT', 'Betul'),
+('LOC100000231', 'S1344129', 'PARLIAMENT', 'Nandurbar'),
+('LOC100000232', 'S1344129', 'PARLIAMENT', 'Dhule'),
+('LOC100000233', 'S1344129', 'PARLIAMENT', 'Jalgaon'),
+('LOC100000234', 'S1344129', 'PARLIAMENT', 'Raver'),
+('LOC100000235', 'S1344129', 'PARLIAMENT', 'Buldhana'),
+('LOC100000236', 'S1344129', 'PARLIAMENT', 'Akola'),
+('LOC100000237', 'S1344129', 'PARLIAMENT', 'Amravati'),
+('LOC100000238', 'S1344129', 'PARLIAMENT', 'Wardha'),
+('LOC100000239', 'S1344129', 'PARLIAMENT', 'Ramtek'),
+('LOC100000240', 'S1344129', 'PARLIAMENT', 'Nagpur'),
+('LOC100000241', 'S1344129', 'PARLIAMENT', 'Bhandara-Gondiya'),
+('LOC100000242', 'S1344129', 'PARLIAMENT', 'Gadchiroli-Chimur'),
+('LOC100000243', 'S1344129', 'PARLIAMENT', 'Chandrapur'),
+('LOC100000244', 'S1344129', 'PARLIAMENT', 'Yavatmal-Washim'),
+('LOC100000245', 'S1344129', 'PARLIAMENT', 'Hingoli'),
+('LOC100000246', 'S1344129', 'PARLIAMENT', 'Nanded'),
+('LOC100000247', 'S1344129', 'PARLIAMENT', 'Parbhani'),
+('LOC100000248', 'S1344129', 'PARLIAMENT', 'Jalna'),
+('LOC100000249', 'S1344129', 'PARLIAMENT', 'Aurangabad'),
+('LOC100000250', 'S1344129', 'PARLIAMENT', 'Dindori'),
+('LOC100000251', 'S1344129', 'PARLIAMENT', 'Nashik'),
+('LOC100000252', 'S1344129', 'PARLIAMENT', 'Palghar'),
+('LOC100000253', 'S1344129', 'PARLIAMENT', 'Bhiwandi'),
+('LOC100000254', 'S1344129', 'PARLIAMENT', 'Kalyan'),
+('LOC100000255', 'S1344129', 'PARLIAMENT', 'Thane'),
+('LOC100000256', 'S1344129', 'PARLIAMENT', 'Mumbai North'),
+('LOC100000257', 'S1344129', 'PARLIAMENT', 'Mumbai North West'),
+('LOC100000258', 'S1344129', 'PARLIAMENT', 'Mumbai North East'),
+('LOC100000259', 'S1344129', 'PARLIAMENT', 'Mumbai North Central'),
+('LOC100000260', 'S1344129', 'PARLIAMENT', 'Mumbai South Central'),
+('LOC100000261', 'S1344129', 'PARLIAMENT', 'Mumbai South'),
+('LOC100000262', 'S1344129', 'PARLIAMENT', 'Raigad'),
+('LOC100000263', 'S1344129', 'PARLIAMENT', 'Maval'),
+('LOC100000264', 'S1344129', 'PARLIAMENT', 'Pune'),
+('LOC100000265', 'S1344129', 'PARLIAMENT', 'Baramati'),
+('LOC100000266', 'S1344129', 'PARLIAMENT', 'Shirur'),
+('LOC100000267', 'S1344129', 'PARLIAMENT', 'Ahmednagar'),
+('LOC100000268', 'S1344129', 'PARLIAMENT', 'Shirdi'),
+('LOC100000269', 'S1344129', 'PARLIAMENT', 'Beed'),
+('LOC100000270', 'S1344129', 'PARLIAMENT', 'Osmanabad'),
+('LOC100000271', 'S1344129', 'PARLIAMENT', 'Latur'),
+('LOC100000272', 'S1344129', 'PARLIAMENT', 'Solapur'),
+('LOC100000273', 'S1344129', 'PARLIAMENT', 'Madha'),
+('LOC100000274', 'S1344129', 'PARLIAMENT', 'Sangli'),
+('LOC100000275', 'S1344129', 'PARLIAMENT', 'Satara'),
+('LOC100000276', 'S1344129', 'PARLIAMENT', 'Ratnagiri–Sindhudurg'),
+('LOC100000277', 'S1344129', 'PARLIAMENT', 'Kolhapur'),
+('LOC100000278', 'S1344129', 'PARLIAMENT', 'Hatkanangle'),
+('LOC100000279', 'S7220052', 'PARLIAMENT', 'Inner Manipur'),
+('LOC100000280', 'S7220052', 'PARLIAMENT', 'Outer Manipur'),
+('LOC100000281', 'S4778917', 'PARLIAMENT', 'Shillong'),
+('LOC100000282', 'S4778917', 'PARLIAMENT', 'Tura'),
+('LOC100000283', 'S7445203', 'PARLIAMENT', 'Mizoram Region'),
+('LOC100000284', 'S9598253', 'PARLIAMENT', 'Nagaland Region'),
+('LOC100000285', 'S9697265', 'PARLIAMENT', 'Bargarh'),
+('LOC100000286', 'S9697265', 'PARLIAMENT', 'Sundargarh'),
+('LOC100000287', 'S9697265', 'PARLIAMENT', 'Sambalpur'),
+('LOC100000288', 'S9697265', 'PARLIAMENT', 'Keonjhar'),
+('LOC100000289', 'S9697265', 'PARLIAMENT', 'Mayurbhanj'),
+('LOC100000290', 'S9697265', 'PARLIAMENT', 'Balasore'),
+('LOC100000291', 'S9697265', 'PARLIAMENT', 'Bhadrak'),
+('LOC100000292', 'S9697265', 'PARLIAMENT', 'Jajpur'),
+('LOC100000293', 'S9697265', 'PARLIAMENT', 'Dhenkanal'),
+('LOC100000294', 'S9697265', 'PARLIAMENT', 'Bolangir'),
+('LOC100000295', 'S9697265', 'PARLIAMENT', 'Kalahandi'),
+('LOC100000296', 'S9697265', 'PARLIAMENT', 'Nabarangpur'),
+('LOC100000297', 'S9697265', 'PARLIAMENT', 'Kandhamal'),
+('LOC100000298', 'S9697265', 'PARLIAMENT', 'Cuttack'),
+('LOC100000299', 'S9697265', 'PARLIAMENT', 'Kendrapara'),
+('LOC100000300', 'S9697265', 'PARLIAMENT', 'Jagatsinghpur'),
+('LOC100000301', 'S9697265', 'PARLIAMENT', 'Puri'),
+('LOC100000302', 'S9697265', 'PARLIAMENT', 'Bhubaneswar'),
+('LOC100000303', 'S9697265', 'PARLIAMENT', 'Aska'),
+('LOC100000304', 'S9697265', 'PARLIAMENT', 'Berhampur'),
+('LOC100000305', 'S9697265', 'PARLIAMENT', 'Koraput'),
+('LOC100000306', 'S6461859', 'PARLIAMENT', 'Gurdaspur'),
+('LOC100000307', 'S6461859', 'PARLIAMENT', 'Amritsar'),
+('LOC100000308', 'S6461859', 'PARLIAMENT', 'Khadoor Sahib'),
+('LOC100000309', 'S6461859', 'PARLIAMENT', 'Jalandhar'),
+('LOC100000310', 'S6461859', 'PARLIAMENT', 'Hoshiarpur'),
+('LOC100000311', 'S6461859', 'PARLIAMENT', 'Anandpur Sahib'),
+('LOC100000312', 'S6461859', 'PARLIAMENT', 'Ludhiana'),
+('LOC100000313', 'S6461859', 'PARLIAMENT', 'Fatehgarh Sahib'),
+('LOC100000314', 'S6461859', 'PARLIAMENT', 'Faridkot'),
+('LOC100000315', 'S6461859', 'PARLIAMENT', 'Firozpur'),
+('LOC100000316', 'S6461859', 'PARLIAMENT', 'Bathinda'),
+('LOC100000317', 'S6461859', 'PARLIAMENT', 'Sangrur'),
+('LOC100000318', 'S6461859', 'PARLIAMENT', 'Patiala'),
+('LOC100000319', 'S9219292', 'PARLIAMENT', 'Ganganagar'),
+('LOC100000320', 'S9219292', 'PARLIAMENT', 'Bikaner'),
+('LOC100000321', 'S9219292', 'PARLIAMENT', 'Churu'),
+('LOC100000322', 'S9219292', 'PARLIAMENT', 'Jhunjhunu'),
+('LOC100000323', 'S9219292', 'PARLIAMENT', 'Sikar'),
+('LOC100000324', 'S9219292', 'PARLIAMENT', 'Jaipur Rural'),
+('LOC100000325', 'S9219292', 'PARLIAMENT', 'Jaipur'),
+('LOC100000326', 'S9219292', 'PARLIAMENT', 'Alwar'),
+('LOC100000327', 'S9219292', 'PARLIAMENT', 'Bharatpur'),
+('LOC100000328', 'S9219292', 'PARLIAMENT', 'Karauli-Dholpur'),
+('LOC100000329', 'S9219292', 'PARLIAMENT', 'Dausa'),
+('LOC100000330', 'S9219292', 'PARLIAMENT', 'Tonk-Sawai Madhopur'),
+('LOC100000331', 'S9219292', 'PARLIAMENT', 'Ajmer'),
+('LOC100000332', 'S9219292', 'PARLIAMENT', 'Nagaur'),
+('LOC100000333', 'S9219292', 'PARLIAMENT', 'Pali'),
+('LOC100000334', 'S9219292', 'PARLIAMENT', 'Jodhpur'),
+('LOC100000335', 'S9219292', 'PARLIAMENT', 'Barmer'),
+('LOC100000336', 'S9219292', 'PARLIAMENT', 'Jalore'),
+('LOC100000337', 'S9219292', 'PARLIAMENT', 'Udaipur'),
+('LOC100000338', 'S9219292', 'PARLIAMENT', 'Banswara'),
+('LOC100000339', 'S9219292', 'PARLIAMENT', 'Chittorgarh'),
+('LOC100000340', 'S9219292', 'PARLIAMENT', 'Rajsamand'),
+('LOC100000341', 'S9219292', 'PARLIAMENT', 'Bhilwara'),
+('LOC100000342', 'S9219292', 'PARLIAMENT', 'Kota'),
+('LOC100000343', 'S9219292', 'PARLIAMENT', 'Jhalawar-Baran'),
+('LOC100000344', 'S1307237', 'PARLIAMENT', 'Sikkim Region'),
+('LOC100000345', 'S4309895', 'PARLIAMENT', 'Thiruvallur'),
+('LOC100000346', 'S4309895', 'PARLIAMENT', 'Chennai North'),
+('LOC100000347', 'S4309895', 'PARLIAMENT', 'Chennai South'),
+('LOC100000348', 'S4309895', 'PARLIAMENT', 'Chennai Central'),
+('LOC100000349', 'S4309895', 'PARLIAMENT', 'Sriperumbudur'),
+('LOC100000350', 'S4309895', 'PARLIAMENT', 'Kancheepuram'),
+('LOC100000351', 'S4309895', 'PARLIAMENT', 'Arakkonam'),
+('LOC100000352', 'S4309895', 'PARLIAMENT', 'Vellore'),
+('LOC100000353', 'S4309895', 'PARLIAMENT', 'Krishnagiri'),
+('LOC100000354', 'S4309895', 'PARLIAMENT', 'Dharmapuri'),
+('LOC100000355', 'S4309895', 'PARLIAMENT', 'Tiruvannamalai'),
+('LOC100000356', 'S4309895', 'PARLIAMENT', 'Arani'),
+('LOC100000357', 'S4309895', 'PARLIAMENT', 'Villupuram'),
+('LOC100000358', 'S4309895', 'PARLIAMENT', 'Kallakurichi'),
+('LOC100000359', 'S4309895', 'PARLIAMENT', 'Salem'),
+('LOC100000360', 'S4309895', 'PARLIAMENT', 'Namakkal'),
+('LOC100000361', 'S4309895', 'PARLIAMENT', 'Erode'),
+('LOC100000362', 'S4309895', 'PARLIAMENT', 'Tiruppur'),
+('LOC100000363', 'S4309895', 'PARLIAMENT', 'Nilgiris'),
+('LOC100000364', 'S4309895', 'PARLIAMENT', 'Coimbatore'),
+('LOC100000365', 'S4309895', 'PARLIAMENT', 'Pollachi'),
+('LOC100000366', 'S4309895', 'PARLIAMENT', 'Dindigul'),
+('LOC100000367', 'S4309895', 'PARLIAMENT', 'Karur'),
+('LOC100000368', 'S4309895', 'PARLIAMENT', 'Tiruchirappalli'),
+('LOC100000369', 'S4309895', 'PARLIAMENT', 'Perambalur'),
+('LOC100000370', 'S4309895', 'PARLIAMENT', 'Cuddalore'),
+('LOC100000371', 'S4309895', 'PARLIAMENT', 'Chidambaram'),
+('LOC100000372', 'S4309895', 'PARLIAMENT', 'Mayiladuturai'),
+('LOC100000373', 'S4309895', 'PARLIAMENT', 'Nagapattinam'),
+('LOC100000374', 'S4309895', 'PARLIAMENT', 'Thanjavur'),
+('LOC100000375', 'S4309895', 'PARLIAMENT', 'Sivaganga'),
+('LOC100000376', 'S4309895', 'PARLIAMENT', 'Madurai'),
+('LOC100000377', 'S4309895', 'PARLIAMENT', 'Theni'),
+('LOC100000378', 'S4309895', 'PARLIAMENT', 'Virudhunagar'),
+('LOC100000379', 'S4309895', 'PARLIAMENT', 'Ramanathapuram'),
+('LOC100000380', 'S4309895', 'PARLIAMENT', 'Thoothukudi'),
+('LOC100000381', 'S4309895', 'PARLIAMENT', 'Tenkasi'),
+('LOC100000382', 'S4309895', 'PARLIAMENT', 'Tirunelveli'),
+('LOC100000383', 'S4309895', 'PARLIAMENT', 'Kanyakumari'),
+('LOC100000384', 'S4238552', 'PARLIAMENT', 'Adilabad'),
+('LOC100000385', 'S4238552', 'PARLIAMENT', 'Peddapalle'),
+('LOC100000386', 'S4238552', 'PARLIAMENT', 'Karimnagar'),
+('LOC100000387', 'S4238552', 'PARLIAMENT', 'Nizamabad'),
+('LOC100000388', 'S4238552', 'PARLIAMENT', 'Zahirabad'),
+('LOC100000389', 'S4238552', 'PARLIAMENT', 'Medak'),
+('LOC100000390', 'S4238552', 'PARLIAMENT', 'Malkajgiri'),
+('LOC100000391', 'S4238552', 'PARLIAMENT', 'Secunderabad'),
+('LOC100000392', 'S4238552', 'PARLIAMENT', 'Hyderabad'),
+('LOC100000393', 'S4238552', 'PARLIAMENT', 'Chevella'),
+('LOC100000394', 'S4238552', 'PARLIAMENT', 'Mahbubnagar'),
+('LOC100000395', 'S4238552', 'PARLIAMENT', 'Nagarkurnool'),
+('LOC100000396', 'S4238552', 'PARLIAMENT', 'Nalgonda'),
+('LOC100000397', 'S4238552', 'PARLIAMENT', 'Bhongir'),
+('LOC100000398', 'S4238552', 'PARLIAMENT', 'Warangal'),
+('LOC100000399', 'S4238552', 'PARLIAMENT', 'Mahabubabad'),
+('LOC100000400', 'S4238552', 'PARLIAMENT', 'Khammam'),
+('LOC100000401', 'S2989908', 'PARLIAMENT', 'Tripura West'),
+('LOC100000402', 'S2989908', 'PARLIAMENT', 'Tripura East'),
+('LOC100000403', 'S9526638', 'PARLIAMENT', 'Tehri Garhwal'),
+('LOC100000404', 'S9526638', 'PARLIAMENT', 'Garhwal'),
+('LOC100000405', 'S9526638', 'PARLIAMENT', 'Almora'),
+('LOC100000406', 'S9526638', 'PARLIAMENT', 'Nainital-Udhamsingh Nagar'),
+('LOC100000407', 'S9526638', 'PARLIAMENT', 'Haridwar'),
+('LOC100000408', 'S3002387', 'PARLIAMENT', 'Saharanpur'),
+('LOC100000409', 'S3002387', 'PARLIAMENT', 'Kairana'),
+('LOC100000410', 'S3002387', 'PARLIAMENT', 'Muzaffarnagar'),
+('LOC100000411', 'S3002387', 'PARLIAMENT', 'Bijnor'),
+('LOC100000412', 'S3002387', 'PARLIAMENT', 'Nagina'),
+('LOC100000413', 'S3002387', 'PARLIAMENT', 'Moradabad'),
+('LOC100000414', 'S3002387', 'PARLIAMENT', 'Rampur'),
+('LOC100000415', 'S3002387', 'PARLIAMENT', 'Sambhal'),
+('LOC100000416', 'S3002387', 'PARLIAMENT', 'Amroha'),
+('LOC100000417', 'S3002387', 'PARLIAMENT', 'Meerut'),
+('LOC100000418', 'S3002387', 'PARLIAMENT', 'Baghpat'),
+('LOC100000419', 'S3002387', 'PARLIAMENT', 'Ghaziabad'),
+('LOC100000420', 'S3002387', 'PARLIAMENT', 'Gautam Buddha Nagar'),
+('LOC100000421', 'S3002387', 'PARLIAMENT', 'Bulandshahr'),
+('LOC100000422', 'S3002387', 'PARLIAMENT', 'Aligarh'),
+('LOC100000423', 'S3002387', 'PARLIAMENT', 'Hathras'),
+('LOC100000424', 'S3002387', 'PARLIAMENT', 'Mathura'),
+('LOC100000425', 'S3002387', 'PARLIAMENT', 'Agra'),
+('LOC100000426', 'S3002387', 'PARLIAMENT', 'Fatehpur Sikri'),
+('LOC100000427', 'S3002387', 'PARLIAMENT', 'Firozabad'),
+('LOC100000428', 'S3002387', 'PARLIAMENT', 'Mainpuri'),
+('LOC100000429', 'S3002387', 'PARLIAMENT', 'Etah'),
+('LOC100000430', 'S3002387', 'PARLIAMENT', 'Badaun'),
+('LOC100000431', 'S3002387', 'PARLIAMENT', 'Aonla'),
+('LOC100000432', 'S3002387', 'PARLIAMENT', 'Bareilly'),
+('LOC100000433', 'S3002387', 'PARLIAMENT', 'Pilibhit'),
+('LOC100000434', 'S3002387', 'PARLIAMENT', 'Shahjahanpur'),
+('LOC100000435', 'S3002387', 'PARLIAMENT', 'Kheri'),
+('LOC100000436', 'S3002387', 'PARLIAMENT', 'Dhaurahra'),
+('LOC100000437', 'S3002387', 'PARLIAMENT', 'Sitapur'),
+('LOC100000438', 'S3002387', 'PARLIAMENT', 'Hardoi'),
+('LOC100000439', 'S3002387', 'PARLIAMENT', 'Misrikh'),
+('LOC100000440', 'S3002387', 'PARLIAMENT', 'Unnao'),
+('LOC100000441', 'S3002387', 'PARLIAMENT', 'Mohanlalganj'),
+('LOC100000442', 'S3002387', 'PARLIAMENT', 'Lucknow'),
+('LOC100000443', 'S3002387', 'PARLIAMENT', 'Rae Bareli'),
+('LOC100000444', 'S3002387', 'PARLIAMENT', 'Amethi'),
+('LOC100000445', 'S3002387', 'PARLIAMENT', 'Sultanpur'),
+('LOC100000446', 'S3002387', 'PARLIAMENT', 'Pratapgarh'),
+('LOC100000447', 'S3002387', 'PARLIAMENT', 'Farrukhabad'),
+('LOC100000448', 'S3002387', 'PARLIAMENT', 'Etawah'),
+('LOC100000449', 'S3002387', 'PARLIAMENT', 'Kannauj'),
+('LOC100000450', 'S3002387', 'PARLIAMENT', 'Kanpur Urban'),
+('LOC100000451', 'S3002387', 'PARLIAMENT', 'Akbarpur'),
+('LOC100000452', 'S3002387', 'PARLIAMENT', 'Jalaun'),
+('LOC100000453', 'S3002387', 'PARLIAMENT', 'Jhansi'),
+('LOC100000454', 'S3002387', 'PARLIAMENT', 'Hamirpur'),
+('LOC100000455', 'S3002387', 'PARLIAMENT', 'Banda'),
+('LOC100000456', 'S3002387', 'PARLIAMENT', 'Fatehpur'),
+('LOC100000457', 'S3002387', 'PARLIAMENT', 'Kaushambi'),
+('LOC100000458', 'S3002387', 'PARLIAMENT', 'Phulpur'),
+('LOC100000459', 'S3002387', 'PARLIAMENT', 'Allahabad'),
+('LOC100000460', 'S3002387', 'PARLIAMENT', 'Barabanki'),
+('LOC100000461', 'S3002387', 'PARLIAMENT', 'Faizabad'),
+('LOC100000462', 'S3002387', 'PARLIAMENT', 'Ambedkar Nagar'),
+('LOC100000463', 'S3002387', 'PARLIAMENT', 'Bahraich'),
+('LOC100000464', 'S3002387', 'PARLIAMENT', 'Kaiserganj'),
+('LOC100000465', 'S3002387', 'PARLIAMENT', 'Shrawasti'),
+('LOC100000466', 'S3002387', 'PARLIAMENT', 'Gonda'),
+('LOC100000467', 'S3002387', 'PARLIAMENT', 'Domariyaganj'),
+('LOC100000468', 'S3002387', 'PARLIAMENT', 'Basti'),
+('LOC100000469', 'S3002387', 'PARLIAMENT', 'Sant Kabir Nagar'),
+('LOC100000470', 'S3002387', 'PARLIAMENT', 'Maharajganj'),
+('LOC100000471', 'S3002387', 'PARLIAMENT', 'Gorakhpur'),
+('LOC100000472', 'S3002387', 'PARLIAMENT', 'Kushi Nagar'),
+('LOC100000473', 'S3002387', 'PARLIAMENT', 'Deoria'),
+('LOC100000474', 'S3002387', 'PARLIAMENT', 'Bansgaon'),
+('LOC100000475', 'S3002387', 'PARLIAMENT', 'Lalganj'),
+('LOC100000476', 'S3002387', 'PARLIAMENT', 'Azamgarh'),
+('LOC100000477', 'S3002387', 'PARLIAMENT', 'Ghosi'),
+('LOC100000478', 'S3002387', 'PARLIAMENT', 'Salempur'),
+('LOC100000479', 'S3002387', 'PARLIAMENT', 'Ballia'),
+('LOC100000480', 'S3002387', 'PARLIAMENT', 'Jaunpur'),
+('LOC100000481', 'S3002387', 'PARLIAMENT', 'Machhlishahr'),
+('LOC100000482', 'S3002387', 'PARLIAMENT', 'Ghazipur'),
+('LOC100000483', 'S3002387', 'PARLIAMENT', 'Chandauli'),
+('LOC100000484', 'S3002387', 'PARLIAMENT', 'Varanasi'),
+('LOC100000485', 'S3002387', 'PARLIAMENT', 'Bhadohi'),
+('LOC100000486', 'S3002387', 'PARLIAMENT', 'Mirzapur'),
+('LOC100000487', 'S3002387', 'PARLIAMENT', 'Robertsganj'),
+('LOC100000488', 'S2275661', 'PARLIAMENT', 'Cooch Behar'),
+('LOC100000489', 'S2275661', 'PARLIAMENT', 'Alipurduars'),
+('LOC100000490', 'S2275661', 'PARLIAMENT', 'Jalpaiguri'),
+('LOC100000491', 'S2275661', 'PARLIAMENT', 'Darjeeling'),
+('LOC100000492', 'S2275661', 'PARLIAMENT', 'Raiganj'),
+('LOC100000493', 'S2275661', 'PARLIAMENT', 'Balurghat'),
+('LOC100000494', 'S2275661', 'PARLIAMENT', 'Maldaha Uttar'),
+('LOC100000495', 'S2275661', 'PARLIAMENT', 'Maldaha Dakshin'),
+('LOC100000496', 'S2275661', 'PARLIAMENT', 'Jangipur'),
+('LOC100000497', 'S2275661', 'PARLIAMENT', 'Baharampur'),
+('LOC100000498', 'S2275661', 'PARLIAMENT', 'Murshidabad'),
+('LOC100000499', 'S2275661', 'PARLIAMENT', 'Krishnanagar'),
+('LOC100000500', 'S2275661', 'PARLIAMENT', 'Ranaghat'),
+('LOC100000501', 'S2275661', 'PARLIAMENT', 'Bangaon'),
+('LOC100000502', 'S2275661', 'PARLIAMENT', 'Barrackpur'),
+('LOC100000503', 'S2275661', 'PARLIAMENT', 'Dum Dum'),
+('LOC100000504', 'S2275661', 'PARLIAMENT', 'Barasat'),
+('LOC100000505', 'S2275661', 'PARLIAMENT', 'Basirhat'),
+('LOC100000506', 'S2275661', 'PARLIAMENT', 'Jaynagar'),
+('LOC100000507', 'S2275661', 'PARLIAMENT', 'Mathurapur'),
+('LOC100000508', 'S2275661', 'PARLIAMENT', 'Diamond Harbour'),
+('LOC100000509', 'S2275661', 'PARLIAMENT', 'Jadavpur'),
+('LOC100000510', 'S2275661', 'PARLIAMENT', 'Kolkata Dakshin'),
+('LOC100000511', 'S2275661', 'PARLIAMENT', 'Kolkata Uttar'),
+('LOC100000512', 'S2275661', 'PARLIAMENT', 'Howrah'),
+('LOC100000513', 'S2275661', 'PARLIAMENT', 'Uluberia'),
+('LOC100000514', 'S2275661', 'PARLIAMENT', 'Srerampur'),
+('LOC100000515', 'S2275661', 'PARLIAMENT', 'Hooghly'),
+('LOC100000516', 'S2275661', 'PARLIAMENT', 'Arambag'),
+('LOC100000517', 'S2275661', 'PARLIAMENT', 'Tamluk'),
+('LOC100000518', 'S2275661', 'PARLIAMENT', 'Kanthi'),
+('LOC100000519', 'S2275661', 'PARLIAMENT', 'Ghatal'),
+('LOC100000520', 'S2275661', 'PARLIAMENT', 'Jhargram'),
+('LOC100000521', 'S2275661', 'PARLIAMENT', 'Medinipur'),
+('LOC100000522', 'S2275661', 'PARLIAMENT', 'Purulia'),
+('LOC100000523', 'S2275661', 'PARLIAMENT', 'Bankura'),
+('LOC100000524', 'S2275661', 'PARLIAMENT', 'Bishnupur'),
+('LOC100000525', 'S2275661', 'PARLIAMENT', 'Bardhaman Purba'),
+('LOC100000526', 'S2275661', 'PARLIAMENT', 'Bardhaman-Durgapur'),
+('LOC100000527', 'S2275661', 'PARLIAMENT', 'Asansol'),
+('LOC100000528', 'S2275661', 'PARLIAMENT', 'Bolpur'),
+('LOC100000529', 'S2275661', 'PARLIAMENT', 'Birbhum'),
+('LOC100000530', 'S7368164', 'PARLIAMENT', 'Andaman and Nicobar Islands'),
+('LOC100000531', 'S9534233', 'PARLIAMENT', 'Chandigarh Region'),
+('LOC100000532', 'S4385850', 'PARLIAMENT', 'Chandni Chowk'),
+('LOC100000533', 'S4385850', 'PARLIAMENT', 'North East Delhi'),
+('LOC100000534', 'S4385850', 'PARLIAMENT', 'East Delhi'),
+('LOC100000535', 'S4385850', 'PARLIAMENT', 'New Delhi'),
+('LOC100000536', 'S4385850', 'PARLIAMENT', 'North West Delhi'),
+('LOC100000537', 'S4385850', 'PARLIAMENT', 'West Delhi'),
+('LOC100000538', 'S4385850', 'PARLIAMENT', 'South Delhi'),
+('LOC100000539', 'S9184299', 'PARLIAMENT', 'Dadra and Nagar Haveli Region'),
+('LOC100000540', 'S9854058', 'PARLIAMENT', 'Daman and Diu Region'),
+('LOC100000541', 'S7718912', 'PARLIAMENT', 'Lakshadweep Region'),
+('LOC100000542', 'S2626953', 'PARLIAMENT', 'Puducherry Region');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `minlocation`
+--
+
+CREATE TABLE IF NOT EXISTS `minlocation` (
+  `minlocation_Id` varchar(15) NOT NULL,
+  `location_Id` varchar(10) NOT NULL,
+  `electionType` varchar(100) NOT NULL,
+  `eng_minlocationName` varchar(100) NOT NULL,
+  PRIMARY KEY (`minlocation_Id`),
+  KEY `location_Id` (`location_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `postalcodes`
+--
+
+CREATE TABLE IF NOT EXISTS `postalcodes` (
+  `postal_Id` varchar(10) NOT NULL,
+  `minlocation_Id` varchar(12) NOT NULL,
+  `postalCode` varchar(10) NOT NULL,
+  `region` varchar(100) NOT NULL,
+  PRIMARY KEY (`postal_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `states`
+--
+
+CREATE TABLE IF NOT EXISTS `states` (
+  `state_Id` varchar(8) NOT NULL,
+  `country_Id` varchar(4) NOT NULL,
+  `stateType` varchar(25) NOT NULL,
+  `eng_stateName` varchar(100) NOT NULL,
+  PRIMARY KEY (`state_Id`),
+  KEY `countryId` (`country_Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `states`
+--
+
+INSERT INTO `states` (`state_Id`, `country_Id`, `stateType`, `eng_stateName`) VALUES
+('S1267089', 'C001', 'STATE', 'Jharkhand'),
+('S1278754', 'C001', 'STATE', 'Madhya Pradesh'),
+('S1292588', 'C001', 'STATE', 'Chhattisgarh'),
+('S1307237', 'C001', 'STATE', 'Sikkim'),
+('S1344129', 'C001', 'STATE', 'Maharashtra'),
+('S2275661', 'C001', 'STATE', 'West Bengal'),
+('S2626953', 'C001', 'UNION_TERRITORY', 'Puducherry'),
+('S2978244', 'C001', 'STATE', 'Gujarat'),
+('S2989908', 'C001', 'STATE', 'Tripura'),
+('S3002387', 'C001', 'STATE', 'Uttar Pradesh'),
+('S3546549', 'C001', 'STATE', 'Goa'),
+('S4138726', 'C001', 'STATE', 'Himachal Pradesh'),
+('S4238552', 'C001', 'STATE', 'Telangana'),
+('S4309895', 'C001', 'STATE', 'Tamil Nadu'),
+('S4385850', 'C001', 'UNION_TERRITORY', 'Delhi'),
+('S4533148', 'C001', 'STATE', 'Assam'),
+('S4540201', 'C001', 'STATE', 'Andhra Pradesh'),
+('S4778917', 'C001', 'STATE', 'Meghalaya'),
+('S5869683', 'C001', 'STATE', 'Arunachal Pradesh'),
+('S6449652', 'C001', 'STATE', 'Haryana'),
+('S6461859', 'C001', 'STATE', 'Punjab'),
+('S6489800', 'C001', 'STATE', 'Bihar'),
+('S7156032', 'C001', 'STATE', 'Karnataka'),
+('S7220052', 'C001', 'STATE', 'Manipur'),
+('S7368164', 'C001', 'UNION_TERRITORY', 'Andaman and Nicobar Islands'),
+('S7445203', 'C001', 'STATE', 'Mizoram'),
+('S7664387', 'C001', 'STATE', 'Jammu And Kashmir'),
+('S7718912', 'C001', 'UNION_TERRITORY', 'Lakshadweep'),
+('S8356391', 'C001', 'STATE', 'Kerala'),
+('S9184299', 'C001', 'UNION_TERRITORY', 'Dadra and Nagar Haveli'),
+('S9219292', 'C001', 'STATE', 'Rajasthan'),
+('S9526638', 'C001', 'STATE', 'Uttarakhand'),
+('S9534233', 'C001', 'UNION_TERRITORY', 'Chandigarh'),
+('S9598253', 'C001', 'STATE', 'Nagaland'),
+('S9697265', 'C001', 'STATE', 'Odisha'),
+('S9854058', 'C001', 'UNION_TERRITORY', 'Daman and Diu');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `timezones`
+--
+
+CREATE TABLE IF NOT EXISTS `timezones` (
+  `timezone_Id` varchar(5) NOT NULL,
+  `timezone` varchar(60) NOT NULL,
+  `country` varchar(4) NOT NULL,
+  PRIMARY KEY (`timezone_Id`),
+  KEY `country` (`country`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `timezones`
+--
+
+INSERT INTO `timezones` (`timezone_Id`, `timezone`, `country`) VALUES
+('T001', 'Asia/Kolkata', 'C001');
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `locations`
+--
+ALTER TABLE `locations`
+  ADD CONSTRAINT `locations_ibfk_1` FOREIGN KEY (`state_Id`) REFERENCES `states` (`state_Id`);
+
+--
+-- Constraints for table `minlocation`
+--
+ALTER TABLE `minlocation`
+  ADD CONSTRAINT `minlocation_ibfk_1` FOREIGN KEY (`location_Id`) REFERENCES `locations` (`location_Id`);
+
+--
+-- Constraints for table `states`
+--
+ALTER TABLE `states`
+  ADD CONSTRAINT `states_ibfk_1` FOREIGN KEY (`country_Id`) REFERENCES `countries` (`country_Id`);
+
+--
+-- Constraints for table `timezones`
+--
+ALTER TABLE `timezones`
+  ADD CONSTRAINT `timezones_ibfk_1` FOREIGN KEY (`country`) REFERENCES `countries` (`country_Id`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

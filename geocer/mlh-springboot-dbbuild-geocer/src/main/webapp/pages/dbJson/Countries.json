@@ -1,0 +1,35 @@
+{
+  "India": {
+    "country_Id": "C001",
+    "countryName": "India",
+    "countryCapital": "New Delhi",
+    "phonecode": "+91",
+    "currency": "India Rupee",
+    "noOfStates": 29,
+    "noOfUnionTerritories": 7,
+    "currentLevel": "COUNTRY",
+    "nextLevel": "STATE_UNIONTERRITORY"
+  },
+  "Australia": {
+    "country_Id": "C002",
+    "countryName": "Australia",
+    "countryCapital": "Canberra",
+    "phonecode": "+61",
+    "currency": "Australian Dollar",
+    "noOfStates": 0,
+    "noOfUnionTerritories": 0,
+    "currentLevel": "COUNTRY",
+    "nextLevel": "STATE"
+  },
+  "United States of America": {
+    "country_Id": "C003",
+    "countryName": "United States of America",
+    "countryCapital": "Washington, D.C.",
+    "phonecode": "+1",
+    "currency": "United States Dollar",
+    "noOfStates": 0,
+    "noOfUnionTerritories": 0,
+    "currentLevel": "COUNTRY",
+    "nextLevel": "STATE"
+  }
+}

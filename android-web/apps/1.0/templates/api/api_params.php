@@ -1,0 +1,80 @@
+<?php
+$_SESSION["PROJECT_MODE"]='DEBUG'; // DEBUG / PROD
+if($_SESSION["PROJECT_MODE"]=='DEBUG'){
+$_SESSION["PROJECT_URL"]="http://".$_SERVER["HTTP_HOST"]."/mlh/android-web/apps/"; 
+} else {
+$_SESSION["PROJECT_VERSION_NUMBER"]='1.0';
+$_SESSION["PROJECT_URL"]="http://apps.mylocalhook.com/";
+}
+?>
+<style>
+@font-face { font-family: "mlhfont001";src: url("fonts/BAUHS93.TTF"); }
+@font-face { font-family: "mlhfont002";src: url("fonts/Boogaloo-Regular.otf"); }
+@font-face { font-family: "mlhfont003";src: url("fonts/kurale-regular.otf"); }
+@font-face { font-family: "mlhfont004";src: url("fonts/Acratica.otf"); }
+@font-face { font-family: "mlhfont005";src: url("fonts/madpakke.otf"); }
+@font-face { font-family: "mlhfont006";src: url("fonts/decalled.ttf"); }
+</style>
+<script type="text/javascript">
+ /* Android Javascript Interface Objects */
+ var Android;
+ var AndroidNotify;
+ var AndroidSession;
+ var AndroidDatabase; 
+ var AndroidSQLiteUsrFrndsInfo;
+ var PROJECT_MODE='<?php  if(isset($_SESSION["PROJECT_MODE"])) { echo $_SESSION["PROJECT_MODE"]; } ?>';
+ var PROJECT_VERSION_NUMBER = '<?php  if(isset($_SESSION["PROJECT_VERSION_NUMBER"])) { echo $_SESSION["PROJECT_VERSION_NUMBER"]; } ?>';
+ var PROJECT_URL='<?php  if(isset($_SESSION["PROJECT_URL"])) { echo $_SESSION["PROJECT_URL"]; } ?>';
+ if(AndroidSession!==undefined){
+  AndroidSession.setAndroidSession('PROJECT_VERSION_NUMBER',PROJECT_VERSION_NUMBER);
+ }
+ /* AUTHENTICATION_STATUS - COMPLETED/INCOMPLETED */
+ var AUTHENTICATION_STATUS='<?php  if(isset($_SESSION["AUTHENTICATION_STATUS"])) { echo $_SESSION["AUTHENTICATION_STATUS"]; } ?>'; 
+ /* USER DATA */
+ var USR_LANG='<?php if(isset($_SESSION["USR_LANG"])) { echo $_SESSION["USR_LANG"]; } ?>';
+ var AUTH_USER_ID='<?php if(isset($_SESSION["AUTH_USER_ID"])) { echo $_SESSION["AUTH_USER_ID"]; } else { echo "0"; } ?>';
+ var AUTH_USER_USERNAME='<?php if(isset($_SESSION["AUTH_USER_USERNAME"])) { echo $_SESSION["AUTH_USER_USERNAME"]; } ?>';
+ var AUTH_USER_SURNAME='<?php if(isset($_SESSION["AUTH_USER_SURNAME"])) { echo $_SESSION["AUTH_USER_SURNAME"]; } ?>';
+ var AUTH_USER_FULLNAME='<?php if(isset($_SESSION["AUTH_USER_FULLNAME"])) { echo $_SESSION["AUTH_USER_FULLNAME"]; } ?>';
+ var AUTH_USER_CURPHONENUMBER='<?php if(isset($_SESSION["AUTH_USER_CURPHONENUMBER"])) { echo $_SESSION["AUTH_USER_CURPHONENUMBER"]; } ?>';
+ var AUTH_USER_PHONENUMBERS='<?php if(isset($_SESSION["AUTH_USER_PHONENUMBERS"])) { echo $_SESSION["AUTH_USER_PHONENUMBERS"]; } ?>';
+ var AUTH_USER_GENDER='<?php if(isset($_SESSION["AUTH_USER_GENDER"])) { echo $_SESSION["AUTH_USER_GENDER"]; } ?>';
+ var AUTH_USER_DOB='<?php if(isset($_SESSION["AUTH_USER_DOB"])) { echo $_SESSION["AUTH_USER_DOB"]; } ?>';
+ var AUTH_USER_COUNTRY='<?php if(isset($_SESSION["AUTH_USER_COUNTRY"])) { echo $_SESSION["AUTH_USER_COUNTRY"]; } ?>'; 
+ var AUTH_USER_STATE='<?php if(isset($_SESSION["AUTH_USER_STATE"])) { echo $_SESSION["AUTH_USER_STATE"]; } ?>';
+ var AUTH_USER_LOCATION='<?php if(isset($_SESSION["AUTH_USER_LOCATION"])) { echo $_SESSION["AUTH_USER_LOCATION"]; } ?>';
+ var AUTH_USER_LOCALITY='<?php if(isset($_SESSION["AUTH_USER_LOCALITY"])) { echo $_SESSION["AUTH_USER_LOCALITY"]; } ?>';
+ var AUTH_USER_PROFILEPIC='<?php if(isset($_SESSION["AUTH_USER_PROFILEPIC"])) { echo $_SESSION["AUTH_USER_PROFILEPIC"]; } ?>';
+ var AUTH_USER_ABOUTME='<?php if(isset($_SESSION["AUTH_USER_ABOUTME"])) { echo $_SESSION["AUTH_USER_ABOUTME"]; } ?>';
+ var AUTH_USER_TIMEZONE='<?php if(isset($_SESSION["AUTH_USER_TIMEZONE"])) { echo $_SESSION["AUTH_USER_TIMEZONE"]; } ?>';
+ var AUTH_USER_SUBSCRIPTIONS_LIST='<?php if(isset($_SESSION["AUTH_USER_SUBSCRIPTIONS_LIST"])) { echo $_SESSION["AUTH_USER_SUBSCRIPTIONS_LIST"]; } ?>';
+ var AUTH_USER_ISADMIN='<?php if(isset($_SESSION["AUTH_USER_ISADMIN"])) { echo $_SESSION["AUTH_USER_ISADMIN"]; } ?>';
+/* New Things to Add */
+ var AUTH_USER_FRIENDS='<?php if(isset($_SESSION["AUTH_USER_FRIENDS"])) { echo $_SESSION["AUTH_USER_FRIENDS"]; } ?>';
+/* User created Community List */
+var AUTH_USER_COMMUNITIES_CREATED='<?php if(isset($_SESSION["AUTH_USER_COMMUNITIES_CREATED"])) { echo $_SESSION["AUTH_USER_COMMUNITIES_CREATED"]; } ?>';
+
+console.log("[api_params] PROJECT_URL: "+PROJECT_URL);
+console.log("[api_params] USR_LANG: "+USR_LANG);
+console.log("[api_params] AUTHENTICATION_STATUS: "+AUTHENTICATION_STATUS);
+console.log("[api_params] AUTH_USER_ID: "+AUTH_USER_ID);
+console.log("[api_params] AUTH_USER_USERNAME: "+AUTH_USER_USERNAME);
+console.log("[api_params] AUTH_USER_SURNAME: "+AUTH_USER_SURNAME);
+console.log("[api_params] AUTH_USER_FULLNAME: "+AUTH_USER_FULLNAME);
+console.log("[api_params] AUTH_USER_ABOUTME: "+AUTH_USER_ABOUTME);
+console.log("[api_params] AUTH_USER_CURPHONENUMBER: "+AUTH_USER_CURPHONENUMBER);
+console.log("[api_params] AUTH_USER_PHONENUMBERS: "+AUTH_USER_PHONENUMBERS);
+console.log("[api_params] AUTH_USER_GENDER: "+AUTH_USER_GENDER);
+console.log("[api_params] AUTH_USER_DOB: "+AUTH_USER_DOB);
+console.log("[api_params] AUTH_USER_COUNTRY: "+AUTH_USER_COUNTRY);
+console.log("[api_params] AUTH_USER_STATE: "+AUTH_USER_STATE);
+console.log("[api_params] AUTH_USER_LOCATION: "+AUTH_USER_LOCATION);
+console.log("[api_params] AUTH_USER_LOCALITY: "+AUTH_USER_LOCALITY);
+console.log("[api_params] AUTH_USER_PROFILEPIC: "+AUTH_USER_PROFILEPIC);
+console.log("[api_params] AUTH_USER_TIMEZONE: "+AUTH_USER_TIMEZONE);
+console.log("[api_params] AUTH_USER_SUBSCRIPTIONS_LIST: "+AUTH_USER_SUBSCRIPTIONS_LIST);
+console.log("[api_params] AUTH_USER_ISADMIN: "+AUTH_USER_ISADMIN);
+console.log("[api_params] AUTH_USER_FRIENDS: "+AUTH_USER_FRIENDS);
+console.log("[api_params] AUTH_USER_COMMUNITIES_CREATED: "+AUTH_USER_COMMUNITIES_CREATED);
+// alert(AUTH_USER_SUBSCRIPTIONS+" "+AUTH_USER_SUBSCRIPTIONS_LIST);
+ </script>

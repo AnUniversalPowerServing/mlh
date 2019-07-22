@@ -1,0 +1,326 @@
+{
+  "Andaman and Nicobar Islands": {
+    "state_Id": "S7368164",
+    "stateName": "Andaman and Nicobar Islands",
+    "stateCapital": "Port Blair",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "UNION_TERRITORY",
+    "NextLevel": "DISTRICT"
+  },
+  "Andhra Pradesh": {
+    "state_Id": "S4540201",
+    "stateName": "Andhra Pradesh",
+    "stateCapital": "Amaravati",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Arunachal Pradesh": {
+    "state_Id": "S5869683",
+    "stateName": "Arunachal Pradesh",
+    "stateCapital": "Itanagar",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Assam": {
+    "state_Id": "S4533148",
+    "stateName": "Assam",
+    "stateCapital": "Dispur",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Bihar": {
+    "state_Id": "S6489800",
+    "stateName": "Bihar",
+    "stateCapital": "Patna",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Chandigarh": {
+    "state_Id": "S9534233",
+    "stateName": "Chandigarh",
+    "stateCapital": "Chandigarh",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "UNION_TERRITORY",
+    "NextLevel": "NA"
+  },
+  "Chhattisgarh": {
+    "state_Id": "S1292588",
+    "stateName": "Chhattisgarh",
+    "stateCapital": "Raipur",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Dadra and Nagar Haveli": {
+    "state_Id": "S9184299",
+    "stateName": "Dadra and Nagar Haveli",
+    "stateCapital": "Silvassa",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "UNION_TERRITORY",
+    "NextLevel": "NA"
+  },
+  "Daman and Diu": {
+    "state_Id": "S9854058",
+    "stateName": "Daman and Diu",
+    "stateCapital": "Daman",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "UNION_TERRITORY",
+    "NextLevel": "NA"
+  },
+  "Delhi": {
+    "state_Id": "S4385850",
+    "stateName": "Delhi",
+    "stateCapital": "Delhi",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "UNION_TERRITORY",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Goa": {
+    "state_Id": "S3546549",
+    "stateName": "Goa",
+    "stateCapital": "Panaji",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Gujarat": {
+    "state_Id": "S2978244",
+    "stateName": "Gujarat",
+    "stateCapital": "Gandhinagar",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Haryana": {
+    "state_Id": "S6449652",
+    "stateName": "Haryana",
+    "stateCapital": "Chandigarh",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Himachal Pradesh": {
+    "state_Id": "S4138726",
+    "stateName": "Himachal Pradesh",
+    "stateCapital": "Shimla",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Jammu And Kashmir": {
+    "state_Id": "S7664387",
+    "stateName": "Jammu And Kashmir",
+    "stateCapital": "Srinagar|Jammu ",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Jharkhand": {
+    "state_Id": "S1267089",
+    "stateName": "Jharkhand",
+    "stateCapital": "Ranchi",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Karnataka": {
+    "state_Id": "S7156032",
+    "stateName": "Karnataka",
+    "stateCapital": "Bengaluru",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Kerala": {
+    "state_Id": "S8356391",
+    "stateName": "Kerala",
+    "stateCapital": "Trivandrum",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Lakshadweep": {
+    "state_Id": "S7718912",
+    "stateName": "Lakshadweep",
+    "stateCapital": "Kavaratti",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "UNION_TERRITORY",
+    "NextLevel": "NA"
+  },
+  "Madhya Pradesh": {
+    "state_Id": "S1278754",
+    "stateName": "Madhya Pradesh",
+    "stateCapital": "Bhopal",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Maharashtra": {
+    "state_Id": "S1344129",
+    "stateName": "Maharashtra",
+    "stateCapital": "Mumbai",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Manipur": {
+    "state_Id": "S7220052",
+    "stateName": "Manipur",
+    "stateCapital": "Imphal",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Meghalaya": {
+    "state_Id": "S4778917",
+    "stateName": "Meghalaya",
+    "stateCapital": "Shillong",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Mizoram": {
+    "state_Id": "S7445203",
+    "stateName": "Mizoram",
+    "stateCapital": "Aizawl",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Nagaland": {
+    "state_Id": "S9598253",
+    "stateName": "Nagaland",
+    "stateCapital": "Kohima",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Odisha": {
+    "state_Id": "S9697265",
+    "stateName": "Odisha",
+    "stateCapital": "Bhubaneswar",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Puducherry": {
+    "state_Id": "S2626953",
+    "stateName": "Puducherry",
+    "stateCapital": "Pondicherry",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "UNION_TERRITORY",
+    "NextLevel": "NA"
+  },
+  "Punjab": {
+    "state_Id": "S6461859",
+    "stateName": "Punjab",
+    "stateCapital": "Chandigarh",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Rajasthan": {
+    "state_Id": "S9219292",
+    "stateName": "Rajasthan",
+    "stateCapital": "Jaipur",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Sikkim": {
+    "state_Id": "S1307237",
+    "stateName": "Sikkim",
+    "stateCapital": "Gangtok",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Tamil Nadu": {
+    "state_Id": "S4309895",
+    "stateName": "Tamil Nadu",
+    "stateCapital": "Chennai",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Telangana": {
+    "state_Id": "S4238552",
+    "stateName": "Telangana",
+    "stateCapital": "Hyderabad",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Tripura": {
+    "state_Id": "S2989908",
+    "stateName": "Tripura",
+    "stateCapital": "Agartala",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "DISTRICT"
+  },
+  "Uttar Pradesh": {
+    "state_Id": "S3002387",
+    "stateName": "Uttar Pradesh",
+    "stateCapital": "Lucknow",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "Uttarakhand": {
+    "state_Id": "S9526638",
+    "stateName": "Uttarakhand",
+    "stateCapital": "Dehradun",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  },
+  "West Bengal": {
+    "state_Id": "S2275661",
+    "stateName": "West Bengal",
+    "stateCapital": "Kolkata",
+    "countryName": "India",
+    "previousLevel": "COUNTRY",
+    "currentLevel": "STATE",
+    "NextLevel": "STATE_DIVISION"
+  }
+}

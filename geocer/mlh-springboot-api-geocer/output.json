@@ -1,0 +1,28 @@
+{
+"country":{
+             "list":[{
+			          "country_Id":"",
+					  "countryName":""
+					 }],
+			 "info":{
+			         "India":{
+							   "country_Id":"",
+							   "countryName":"",
+							   "phonecode":"",
+							   "currency":"",
+							   "timezones":[{
+											  "timezone_Id":"",
+											  "timezone":""
+											}],
+							   "states":{ "list":[{
+												    "state_Id":"",
+													"stateName":""
+												 }],
+										  "info":{
+										  
+												 }
+										}
+							}	  
+					}
+		}
+}
