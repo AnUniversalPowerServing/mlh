@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MyLocalHook</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/api/bootstrap.min.css"/>
+  <link rel="stylesheet" href="styles/api/font-awesome.min.css"/>
+  <link rel="stylesheet" href="styles/api/jquery-ui.css"/>
+  <link rel="stylesheet" href="styles/api/core-skeleton.css"/>
+  <script src="js/api/jquery.min.js"></script>
+  <script src="js/api/jquery-ui.js"></script>
+  <script src="js/api/bootstrap.min.js"></script>
+  <script src="js/api/bootstrap-advanced.js"></script>
+  <script src="js/api/bootstrap-toggle.min.js"></script>
+  <script src="js/api/core-skeleton.js"></script>
+  <script src="js/api/hdat-templates.js"></script>
+<style>
+body { background-color:#e98600; }
+</style>
+</head>
+<body>
+  <div class="container-fluid mtop15p">
+   <div align="center" class="col-md-12">
+    <img src="images\logo-yellow-flat.png" class="app-icon-s1"/>
+   </div>
+  </div>
+  
+  <div class="container-fluid mtop25p font-white">
+    <div class="col-md-12 col-xs-12">
+      <b>Enter your Phone Number</b>
+    </div>
+	<div align="center" class="col-md-12 col-xs-12 mtop15p">
+	 <div class="input-group">
+	   <div class="input-group-btn">
+         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+	      aria-haspopup="true" aria-expanded="false">
+            <span id="authPhNumberDisplay">+91</span>&nbsp;<span class="caret"></span>
+         </button>
+         <ul class="dropdown-menu"><!-- phonecode, country, timezone -->
+	       <li><a href="#">+91</a></li>
+	     </ul>
+       </div>
+       <input type="number" id="auth-phoneNumber" class="form-control" placeholder="XXX-XXX-XXXX"/>
+	 </div>
+    </div>
+	<div id="otpverifyBtn" align="center" class="col-md-12 col-xs-12 mtop15p">
+	  <button id="otpverifyBtnElement" class="btn btn-default form-control" onclick="javascript:verifyOTPCode();">
+	    <b><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Verify</b>
+	  </button>
+	</div>
+	<div id="verifyOTPDiv" align="center" class="white-font col-md-12 col-xs-12"></div>
+  </div>
+  
+  <div id="optcodeDivision" class="container-fluid mtop50p font-white">
+    <div align="center" class="col-xs-12 mtop15p">
+      <b>An OTP Code is sent to<br/> 'XXX-XXX-XXXX'</b>
+	</div>
+	<div id="optcodeErrorMsg" class="col-xs-12 mtop15p"></div>
+	<div class="col-xs-1"></div>
+	<div class="col-xs-10 mtop15p">
+	  <div class="input-group">
+	   <input id="userInput_optCode" type="number" class="form-control" placeholder="XXXXX"/>
+	   <div class="input-group-btn">
+	    <button class="btn btn-default"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;<b>Verify</b></button>
+	   </div>
+	  </div>
+	</div>
+	<div class="col-xs-1"></div>
+  </div>
+  <div id="authpart02_moverbtndiv" class="container-fluid mtop120p font-white">
+    <div align="center" class="col-md-12 col-xs-12">
+     <a href="#">
+       <button class="btn btn-default"><b>Next</b>&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
+	 </a>
+    </div>
+  </div>
+</body>
+</html>

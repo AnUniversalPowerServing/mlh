@@ -1,0 +1,32 @@
+
+/* app-icons-sizes */
+.app-icon-s1 { width:130px;height:auto; }
+.app-icon-s2 { width:110px;height:auto; }
+.app-icon-s3 { width:250px;height:auto; }
+.app-icon-s4 { width:150px;height:auto; }
+
+/* heights */
+.hgt5p { height:5px; } 
+
+/* fonts */
+@font-face { font-family: "mlhfont001";src: url("../../fonts/BAUHS93.TTF"); }
+@font-face { font-family: "mlhfont002";src: url("../../fonts/Boogaloo-Regular.otf"); }
+
+/* font-sizes */
+.f12p { font-size:12px; }
+.f10p{ font-size:10px; }
+
+/* font-colors */
+.font-white { color:#fff; }
+
+/* margins-top: */ 
+.mtop15p { margin-top:15px; }
+.mtop25p { margin-top:25px; }
+.mtop50p { margin-top:50px; }
+.mtop60p { margin-top:60px; }
+.mtop100p { margin-top:100px; }
+.mtop120p { margin-top:120px; }
+.mtop160p { margin-top:160px; }
+
+/* margins-bottom: */ 
+.mbot35p { margin-bottom:35px; }
