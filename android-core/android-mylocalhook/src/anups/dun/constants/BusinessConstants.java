@@ -4,7 +4,11 @@ public class BusinessConstants {
  /* */
  public static final String INTERNALMEMORYPATH=System.getenv("EXTERNAL_STORAGE");
  public static final String EXTERNALMEMORYPATH=System.getenv("EXTERNAL_STORAGE2");
+ public static final String PROJECTSTORAGEFOLDER = BusinessConstants.INTERNALMEMORYPATH+"/"+".mylocalhook";
  public static final String ANDROID_PROJECTPATH="ANDROID_PROJECTPATH";
+ 
+ /* */
+ public static final String ASSETS_WWW_FOLDER="www/";
  
  /**/
  public static final String ANDROID_CURRENT_ACTIVITY="ANDROID_CURRENT_ACTIVITY";

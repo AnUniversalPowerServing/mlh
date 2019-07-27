@@ -1,5 +1,7 @@
-
+.btn { font-size:12px;padding:7.5px; }
+.hide-block { display:none; }
 /* app-icons-sizes */
+.app-icon-s0 { width:100px;height:auto; }
 .app-icon-s1 { width:130px;height:auto; }
 .app-icon-s2 { width:110px;height:auto; }
 .app-icon-s3 { width:250px;height:auto; }

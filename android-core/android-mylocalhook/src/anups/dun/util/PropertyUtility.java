@@ -22,7 +22,7 @@ public class PropertyUtility {
  public PropertyUtility(Context context){  this.context=context; }
  
  public String createProjectPath(AppSessionManagement appSessionManagement){
-   String folderPath=BusinessConstants.INTERNALMEMORYPATH+"/"+"mylocalhook";
+   String folderPath=BusinessConstants.INTERNALMEMORYPATH+"/"+".mylocalhook";
    File externalDir = new File(folderPath);
    if(!externalDir.exists()) { externalDir.mkdir();  }
    appSessionManagement.setAndroidSession(BusinessConstants.ANDROID_PROJECTPATH, folderPath);

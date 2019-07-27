@@ -1,18 +1,29 @@
 package anups.dun.js;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Arrays;
+
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 import anups.dun.app.AndroidWebScreen;
+import anups.dun.constants.BusinessConstants;
 import anups.dun.media.AndroidWebScreenVideo;
+import anups.dun.notify.ws.WSDownloadFileFromServer;
 import anups.dun.util.AndroidLogger;
 import anups.dun.util.CRUDContacts;
 import anups.dun.util.GPSTracker;
@@ -81,6 +92,34 @@ public class AppManagement extends ActionBarActivity {
 	}
 	 return status;
     }
+	
+	@JavascriptInterface
+	public String getTemplateAndLoad(String fileName) {
+	    AssetManager mgr = mContext.getAssets();
+		StringBuilder text = new StringBuilder();
+		try {
+		 InputStream in = mgr.open(BusinessConstants.ASSETS_WWW_FOLDER+fileName, AssetManager.ACCESS_BUFFER);
+		BufferedReader br = new BufferedReader(new InputStreamReader(in));
+		 String line;
+         while ((line = br.readLine()) != null) {
+		         text.append(line).append('\n');
+		     }
+		     br.close();
+		} catch(Exception e) {  logger.error("Exception : "+e.getMessage()); }	
+		return text.toString();
+    }
+	
+	private WSDownloadFileFromServer wSDownloadFileFromServer;
+	@JavascriptInterface
+	public void downloadFilesFromServer(String downloadFromURL, String downloadFromFile, String downloadToPath){
+		wSDownloadFileFromServer = new WSDownloadFileFromServer(mContext);
+		wSDownloadFileFromServer.execute(new String[]{downloadFromURL, downloadFromFile, downloadToPath});
+	}
+	
+	@JavascriptInterface
+	public float progressBar(){
+	 return wSDownloadFileFromServer.getProgressBar();
+	}
 	
 	@JavascriptInterface
 	public void showToast(String toast) {
