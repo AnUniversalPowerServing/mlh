@@ -52,9 +52,10 @@ function subscribe_subdomain(domain_Id,subdomain_Id){
  console.log("TOTALSUBSCRIPTIONCOUNTER: "+TOTALSUBSCRIPTIONCOUNTER);
 }
 function getListOfCategories(div_Id,user_Id,status){
- js_ajax("GET",PROJECT_URL+'backend/php/dac/controller.module.app.user.subscriptions.php',
- { action: 'GET_SESSION_DOMAINSUBSCRIPTION', user_Id:user_Id, projectURL:PROJECT_URL, usrLang:USR_LANG }, 
-  function(response){
+ // js_ajax("GET",PROJECT_URL+'backend/php/dac/controller.module.app.user.subscriptions.php',
+//  { action: 'GET_SESSION_DOMAINSUBSCRIPTION', user_Id:user_Id, projectURL:PROJECT_URL, usrLang:USR_LANG }, 
+//  function(response){
+   var response = Android.getTemplateAndLoad("config/categories.json");
    console.log(response);
    var domainResponse=JSON.parse(response);
    var content='<div class="list-group">';
@@ -138,7 +139,7 @@ function getListOfCategories(div_Id,user_Id,status){
    document.getElementById(div_Id).innerHTML=content;
    validateAndDisplaySubscribeButton();
    console.log(JSON.stringify(SUBSCRIPTION_BUILDER));
- });
+ // });
 }
 function validateAndDisplaySubscribeButton(){ // Display Subscription Button
    if(TOTALSUBSCRIPTIONCOUNTER>0){

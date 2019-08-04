@@ -11,6 +11,9 @@ public class BusinessConstants {
  public static final String ASSETS_WWW_FOLDER="www/";
  
  /**/
+ public static final String WEBSERVICE_FILEUPLOAD="http://192.168.1.4/mlh/android-web/mw/uploadTest/index.php";
+ 
+ /**/
  public static final String ANDROID_CURRENT_ACTIVITY="ANDROID_CURRENT_ACTIVITY";
  
  /* */

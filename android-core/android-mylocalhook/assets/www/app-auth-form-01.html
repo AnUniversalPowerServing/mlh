@@ -24,22 +24,27 @@ function appAuth_form_sendOTPCode(){
 }
 function appAuth_form_verifyOTPCode(){
  if($('#appAuth-divBtn-transferForm2').hasClass('hide-block')){ $('#appAuth-divBtn-transferForm2').removeClass('hide-block'); }
+ window.location.href='app-auth-form-02.html';
 }
 </script>
 </head>
 <body>
-<a href="test.html">Link</a>
-  <div class="container-fluid mtop15p">
-   <div align="center" class="col-md-12">
-    <img src="images\logo-yellow-flat.png" class="app-icon-s0"/>
-   </div>
-  </div>
-  
-  <div class="container-fluid mtop25p font-white">
-    <div class="col-md-12 col-xs-12">
+
+  <div class="container-fluid font-white">
+    <div class="col-md-4 col-sm-3"></div>
+	<div class="col-md-4 col-sm-6">
+	<div class="row">
+    <div align="center" class="col-xs-12 mtop15p">
+      <img src="images\logo-yellow-flat.png" class="app-icon-s0"/>
+    </div>
+    </div>
+	<div class="row">
+	<div class="col-xs-12 mtop25p">
       <b>Enter your Phone Number</b>
     </div>
-	<div align="center" class="col-md-12 col-xs-12 mtop15p">
+	</div>
+	<div class="row">
+	<div align="center" class="col-xs-12 mtop15p">
 	 <div class="input-group">
 	   <div class="input-group-btn">
          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -53,36 +58,40 @@ function appAuth_form_verifyOTPCode(){
        <input type="number" id="auth-phoneNumber" class="form-control" placeholder="XXX-XXX-XXXX"/>
 	 </div>
     </div>
-	<div id="otpverifyBtn" align="center" class="col-md-12 col-xs-12 mtop15p">
+	</div>
+	<div class="row">
+	<div id="otpverifyBtn" align="center" class="col-xs-12 mtop15p">
 	  <button id="otpverifyBtnElement" class="btn btn-default form-control" onclick="javascript:appAuth_form_sendOTPCode();">
 	    <b><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Verify</b>
 	  </button>
 	</div>
-	<div id="verifyOTPDiv" align="center" class="white-font col-md-12 col-xs-12"></div>
-  </div>
-  
-  <div id="appAuth-divForm-optcodeDivision" class="container-fluid mtop50p font-white hide-block">
-    <div align="center" class="col-xs-12 mtop15p">
+	</div>
+	<div class="row">
+	<div id="verifyOTPDiv" align="center" class="col-xs-12"></div>
+	</div>
+	<div class="row">
+    <div align="center" class="col-xs-12 mtop50p">
       <b>An OTP Code is sent to<br/> 'XXX-XXX-XXXX'</b>
 	</div>
-	<div id="optcodeErrorMsg" class="col-xs-12 mtop15p"></div>
-	<div class="col-xs-1"></div>
-	<div class="col-xs-10 mtop15p">
-	  <div class="input-group">
-	   <input id="userInput_optCode" type="number" class="form-control" placeholder="XXXXX"/>
-	   <div class="input-group-btn">
-	    <button class="btn btn-default" onclick="appAuth_form_verifyOTPCode();"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;<b>Verify</b></button>
-	   </div>
-	  </div>
 	</div>
-	<div class="col-xs-1"></div>
+	<div class="row">
+	<div id="optcodeErrorMsg" class="col-xs-12 mtop15p"></div>
+	</div>
+	<div class="row">
+	 <div class="col-xs-1"></div>
+	 <div class="col-xs-10 mtop15p">
+	   <div class="input-group">
+	    <input id="userInput_optCode" type="number" class="form-control" placeholder="XXXXX"/>
+	    <div class="input-group-btn">
+	     <button class="btn btn-default" onclick="appAuth_form_verifyOTPCode();"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;<b>Verify</b></button>
+	    </div>
+	   </div>
+	 </div>
+	 <div class="col-xs-1"></div>
+	</div>
+	</div>
+	<div class="col-md-4 col-sm-3"></div>
   </div>
-  <div id="appAuth-divBtn-transferForm2" class="container-fluid mtop120p font-white hide-block">
-    <div align="center" class="col-md-12 col-xs-12">
-     <a href="app-auth-form-02.html">
-       <button class="btn btn-default"><b>Next</b>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i></button>
-	 </a>
-    </div>
-  </div>
+ 
 </body>
 </html>

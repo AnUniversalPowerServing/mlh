@@ -18,8 +18,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
   try {
-  Android.downloadFilesFromServer("http://192.168.43.43/tmp/", "0001-0030.avi", "");
-  var pBar = setInterval(function(){ var pr = Android.progressBar();
+ // Android.downloadFilesFromServer("http://192.168.43.43/tmp/", "0001-0030.avi", "");
+  Android.fileTransaction('/sdcard/.mylocalhook/','','0001-0030.zip','CLIENT_TO_SERVER','');
+  var pBar = setInterval(function(){ var pr = Android.fileTransactionProgresss();
   var content='<div align="center"><b>'+pr+'% completed</b></div>';
 	  content+=htmlCore.progressbar(pr,'danger');
   document.getElementById("progressBarCount").innerHTML = content; 

@@ -9,7 +9,7 @@
 
 /* heights */
 .hgt5p { height:5px; } 
-
+.mhgt0p { min-height:0px; }
 /* fonts */
 @font-face { font-family: "mlhfont001";src: url("../../fonts/BAUHS93.TTF"); }
 @font-face { font-family: "mlhfont002";src: url("../../fonts/Boogaloo-Regular.otf"); }
@@ -21,6 +21,9 @@
 /* font-colors */
 .font-white { color:#fff; }
 
+.bg-grey { background-color:#f5f5f5; }
+
+
 /* margins-top: */ 
 .mtop15p { margin-top:15px; }
 .mtop25p { margin-top:25px; }
@@ -31,4 +34,11 @@
 .mtop160p { margin-top:160px; }
 
 /* margins-bottom: */ 
+.mbot15p { margin-bottom:15px; }
+.mbot25p { margin-bottom:25px; }
 .mbot35p { margin-bottom:35px; }
+
+.pad0 { padding:0px; }
+
+/* Btns */
+.btn-purple,.btn-purple:hover,.btn-purple:active  { background-color:#69053b;color:#fff;border-color:#ccc; }

@@ -23,9 +23,10 @@ import android.widget.Toast;
 import anups.dun.app.AndroidWebScreen;
 import anups.dun.constants.BusinessConstants;
 import anups.dun.media.AndroidWebScreenVideo;
-import anups.dun.notify.ws.WSDownloadFileFromServer;
+import anups.dun.notify.ws.FilesTransactionService;
 import anups.dun.util.AndroidLogger;
 import anups.dun.util.CRUDContacts;
+import anups.dun.util.FilesTransactionUtility;
 import anups.dun.util.GPSTracker;
 import anups.dun.util.Masking;
 import anups.dun.util.PropertyUtility;
@@ -109,16 +110,37 @@ public class AppManagement extends ActionBarActivity {
 		return text.toString();
     }
 	
-	private WSDownloadFileFromServer wSDownloadFileFromServer;
+	private FilesTransactionUtility filesTransactionUtility;
+	
 	@JavascriptInterface
-	public void downloadFilesFromServer(String downloadFromURL, String downloadFromFile, String downloadToPath){
-		wSDownloadFileFromServer = new WSDownloadFileFromServer(mContext);
-		wSDownloadFileFromServer.execute(new String[]{downloadFromURL, downloadFromFile, downloadToPath});
+	public void fileTransaction(String downloadFrom, String downloadTo, String fileName, 
+			String transactionMode, String transactionFormat){
+    /* =======================================
+     * FUNCTION DESCRIPTION :
+     * =======================================
+     *  This Function is used from Javascript to transfer Data from Device to Server and from
+     *  Server to Device.
+     * =======================================
+     * FUNCTION PARAMETERS :
+     * =======================================
+     * 1) downloadFromURL
+     * 2) downloadToPath
+     * 3) fileName
+     * 4) transactionMode (SERVER_TO_CLIENT/CLIENT_TO_SERVER)
+     *    a) SERVER_TO_CLIENT - Transfers Files from Server to Client
+     *    b) CLIENT_TO_SERVER - Transfers Files from Client to Server
+     * 5) transactionFormat (DELETE_BEFORE_UPLOAD/EXISTS_NO_UPLOAD)
+     *    a) DELETE_BEFORE_UPLOAD - Deletes currently exists File before Upload
+     *    b) EXISTS_NO_UPLOAD - Checks File exists or not, If Exists File will not upload
+     */
+	 filesTransactionUtility = new FilesTransactionUtility();
+	 FilesTransactionService filesTransactionService = new FilesTransactionService(mContext,filesTransactionUtility);
+	 filesTransactionService.execute(new String[]{downloadFrom, downloadTo, fileName, transactionMode, transactionFormat});
 	}
 	
 	@JavascriptInterface
-	public float progressBar(){
-	 return wSDownloadFileFromServer.getProgressBar();
+	public float fileTransactionProgress(){
+	 return filesTransactionUtility.getProgressBar();
 	}
 	
 	@JavascriptInterface
