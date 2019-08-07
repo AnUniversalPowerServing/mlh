@@ -16,7 +16,7 @@
   <script src="js/api/core-skeleton.js"></script>
   <script src="js/api/hdat-templates.js"></script>
 <style>
-body { background-color:#f00044; }
+body { background-color:#fbfbfb; }
 </style>
 <script type="text/javascript">
 function appAuth_form_userDetailsSubmit(){
@@ -25,73 +25,88 @@ function appAuth_form_userDetailsSubmit(){
 </script>
 </head>
 <body>
-  <div class="container-fluid font-white">
-    <div class="col-md-4 col-sm-3"></div>
-	<div class="col-md-4 col-sm-6">
-	  <div class="row">
-	    <div align="center" class="col-md-12 mtop15p">
+  <div class="container-fluid">
+    <div class="col-md-4 col-sm-3 mhgt0p"></div>
+	<div class="col-md-4 col-sm-6 pad0">
+	  <div class="row"  style="background-color:#f00044;">
+	    <div align="center" class="col-md-12 mtop15p mbot15p">
           <img src="images\logo-pink-flat.png" class="app-icon-s0"/>
         </div>
+	  </div><!-- mtop25p mbot35p  -->
+	  <div class="row" style="background-color:#fbe4de;color:#f00044;">
+		<div align="center" class="mtop10p mbot10p"><b>ENTER YOUR DETAILS</b></div>
 	  </div>
-	  <div class="row mtop25p">
-        <div class="col-md-12">
-          <div style="padding-bottom:10px;margin-bottom:15px;border-bottom:1px solid #fff;"><b>Enter your details</b></div>
-        </div>
-      </div>
-	  <div class="row">
-         <div class="col-md-12">
-			 <!-- -->
-			 <div class="form-group">
-			   <label>SurName</label>
-			   <input type="text" class="form-control" placeholder="Enter your SurName"/>
-			 </div>
-			 <div class="form-group">
-			   <label>Full Name</label>
-			   <input type="text" class="form-control" placeholder="Enter your Full Name"/>
-			 </div>
-			 <div class="form-group">
-			   <label>Gender</label>
-			   <select class="form-control">
-				 <option value="MALE">Male</option>
-				 <option value="FEMALE">Female</option>
-			   </select>
-			 </div>
-			 <div class="form-group">
-			   <label>Date of Birth</label>
-			   <input type="date" class="form-control" placeholder="mm/dd/yyyy"/>
-			 </div>
-			 <div class="form-group">
-			   <label>Country</label>
-			   <select class="form-control">
-				 <option value="">Select your Country</option>
-			   </select>
-			 </div> 
-			 <div class="form-group">
-			   <label>State</label>
-			   <select class="form-control">
-				 <option value="">Select your State</option>
-			   </select>
-			 </div> 
-			 <div class="form-group">
-			   <label>Location</label>
-			   <select class="form-control">
-				 <option value="">Select your location</option>
-			   </select>
-			 </div> 
-			 <div class="form-group">
-			   <label>Locality</label>
-			   <select class="form-control">
-				 <option value="">Select your locality</option>
-			   </select>
-			 </div> 
-			 <div align="center" class="form-group">
-			   <button class="btn btn-default form-control mtop15p mbot15p" onclick="javascript:appAuth_form_userDetailsSubmit();">
-			   <b>Next</b>&nbsp;&nbsp;&nbsp;&nbsp;</button>
-			 </div> 
-			 <!-- -->
-        </div>
-     </div>
-  
+	 <div class="row">
+	 <div class="col-md-12 mtop25p">
+	 <!-- -->
+	  <div class="form-group">
+	    <label>SurName</label>
+		<input type="text" class="form-control" placeholder="Enter your SurName"/>
+	  </div>
+	  
+	  <div class="form-group">
+		<label>Full Name</label>
+		<input type="text" class="form-control" placeholder="Enter your Full Name"/>
+	  </div>
+	  
+	  <div class="form-group">
+		<label>Gender</label>
+		<select class="form-control">
+		  <option value="">Select Gender</option>
+		  <option value="MALE">Male</option>
+		  <option value="FEMALE">Female</option>
+		</select>
+	  </div>
+	  
+	  <div class="form-group">
+		<label>Date of Birth</label>
+		<input type="date" class="form-control" placeholder="mm/dd/yyyy"/>
+	  </div>
+	  
+	  <div class="form-group">
+		<label>Country</label>
+		<select class="form-control">
+		  <option value="">Select your Country</option>
+		</select>
+	  </div> 
+		
+      <div class="form-group">
+		<label>State</label>
+		<select class="form-control">
+		  <option value="">Select your State</option>
+		</select>
+	  </div> 
+
+	  <div class="form-group">
+	    <label>Location</label>
+		<select class="form-control">
+		  <option value="">Select your location</option>
+		</select>
+	  </div>
+	  
+	  <div class="form-group">
+		<label>Locality</label>
+		<select class="form-control">
+		  <option value="">Select your locality</option>
+		</select>
+	  </div>
+	  
+	  <div align="center" class="form-group">
+		<button class="btn btn-pink form-control mtop10p mbot15p" onclick="javascript:appAuth_form_userDetailsSubmit();">
+		<b>Next</b>&nbsp;&nbsp;&nbsp;&nbsp;</button>
+	  </div>  
+	  <!-- -->
+	<!--
+  	 <div class="list-group">
+	 <div class="list-group-item" style="background-color:#fbe4de;color:#f00044;border-color:#f00044;"><b>Enter your details</b></div>
+	 <div class="list-group-item" style="border-color:#f00044;">
+	 -->
+	  
+	<!-- </div> 
+	 </div>-->
+	 </div>
+	 </div>
+	 
 	</div>
 	<div class="col-md-4 col-sm-3"></div>
   </div>
