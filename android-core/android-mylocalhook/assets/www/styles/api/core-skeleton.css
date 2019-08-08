@@ -48,6 +48,9 @@
 
 .pad0 { padding:0px; }
 
+/* Elements: */
+
+
 /* Btns */
 .btn-lgt-pink,.btn-lgt-pink:hover,.btn-lgt-pink:active  { background-color:#fbe4de;color:#f00044;border-color:#f00044; }
 .btn-pink,.btn-pink:hover,.btn-pink:active  { background-color:#f00044;color:#fff;border-color:#ccc; }
@@ -58,4 +61,9 @@
 
 .btn-purple,.btn-purple:hover,.btn-purple:active,.btn-purple-o:hover,.btn-purple-o:active  { background-color:#69053b;
 color:#fff;border-color:#ccc; }
+.btn-lgt-purple,.btn-lgt-purple:hover,.btn-lgt-purple:active,.btn-lgt-purple-o:hover,.btn-lgt-purple-o:active  { 
+background-color: #f5bcdb;color: #69053b;border-color:#69053b }
 .btn-purple-o { background-color:#fff;color:#69053b;border-color:#69053b; }
+
+
+.btn-lgt-green,.btn-lgt-green:hover,.btn-lgt-green:active  { background-color:#b3f5b6;color:#076903;border-color:#076903; }
