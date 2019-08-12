@@ -29,6 +29,7 @@ import anups.dun.util.CRUDContacts;
 import anups.dun.util.FilesTransactionUtility;
 import anups.dun.util.GPSTracker;
 import anups.dun.util.Masking;
+import anups.dun.util.NewGPSTracker;
 import anups.dun.util.PropertyUtility;
 import anups.dun.web.templates.URLGenerator;
 
@@ -192,8 +193,11 @@ public class AppManagement extends ActionBarActivity {
 	public String getUserMobileGPSPosition(){
 		GPSTracker gpsTracker = new GPSTracker(mContext);
 		StringBuilder jsonData = new StringBuilder();
-		jsonData.append("{").append("\"latitude\":\"").append(gpsTracker.latitude).append("\",");
-		jsonData.append("\"longitude\":\"").append(gpsTracker.longitude).append("\"}");
+		double lat = gpsTracker.getLatitude();
+		double lng = gpsTracker.getLongitude();
+		jsonData.append("{").append("\"lat\":").append(lat).append(",");
+		jsonData.append("\"lng\":").append(lng).append("}");
+	  logger.info("mylatlng : "+jsonData.toString());
 	  return jsonData.toString();
 	}
 

@@ -21,6 +21,7 @@ import android.webkit.ValueCallback;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import anups.dun.app.R;
+import com.google.android.gms.maps.GoogleMap;
 import anups.dun.constants.BusinessConstants;
 import anups.dun.db.js.AppSQLiteUsrFrndsContactsInfo;
 import anups.dun.js.AppManagement;
@@ -34,6 +35,13 @@ import anups.dun.util.NetworkUtility;
 import anups.dun.util.PropertyUtility;
 import anups.dun.web.templates.URLGenerator;
 import java.io.File;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 
 @SuppressLint({ "NewApi", "ShowToast", "ResourceAsColor" })
 public  class AndroidWebScreen extends Activity  {
@@ -227,7 +235,7 @@ protected void onCreate(Bundle savedInstanceState) {
  requestWindowFeature(Window.FEATURE_NO_TITLE);
  setTitle(R.string.app_name);
  setContentView(R.layout.activity_androidwebscreen);
-
+ 
  Intent intent = getIntent();
  Uri data = intent.getData();
  Bundle extras = intent.getExtras();
@@ -408,6 +416,8 @@ protected void onCreate(Bundle savedInstanceState) {
 
         return super.onKeyDown(keyCode, event);
     }
+
+	
 
 
 }

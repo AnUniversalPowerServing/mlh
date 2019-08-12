@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MyLocalHook</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/api/bootstrap.min.css"/>
+  <link rel="stylesheet" href="styles/api/font-awesome.min.css"/>
+  <link rel="stylesheet" href="styles/api/jquery-ui.css"/>
+  <link rel="stylesheet" href="styles/api/core-skeleton.css"/>
+  <link rel="stylesheet" href="styles/api/bootstrap-toggle.min.css"/>
+  <link rel="stylesheet" href="styles/api/simple-sidebar.css"/>
+  <script src="js/api/jquery.min.js"></script>
+  <script src="js/api/jquery-ui.js"></script>
+  <script src="js/api/bootstrap.min.js"></script>
+  <script src="js/api/bootstrap-advanced.js"></script>
+  <script src="js/api/bootstrap-toggle.min.js"></script>
+  <script src="js/api/core-skeleton.js"></script>
+  <script src="js/api/hdat-templates.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  sideWrapperToggle();
+});
+$(document).ready(function(){
+mlh_homepage_selMenu("mlh-homepage-menulist-home");
+});
+function mlh_homepage_selMenu(sel_Id){
+bootstrap_menu_trigger({"mlh-homepage-menulist-home":{ "contents":["mlh-homepage-menucontent-home"],"functions":function(){ } },
+"mlh-homepage-menulist-mylocation":{ "contents":["mlh-homepage-menucontent-mylocation"],"functions":function(){ } },
+"mlh-homepage-menulist-newsfeed":{ "contents":["mlh-homepage-menucontent-newsfeed"],"functions":function(){ } },
+"mlh-homepage-menulist-mylocalhook":{ "contents":["mlh-homepage-menucontent-mylocalhook"],"functions":function(){ } },
+"mlh-homepage-menulist-socialstory":{ "contents":["mlh-homepage-menucontent-socialstory"],"functions":function(){ } },
+"mlh-homepage-menulist-myusageAndEarnings":{ "contents":["mlh-homepage-menucontent-myusageAndEarnings"],"functions":function(){ } }
+}, 'list-inline',sel_Id,-1); 
+}
+</script>
+<style>
+.map-plot{ height:300px;background-color:#f5f5f5; }
+</style>
+</head>
+<body>
+
+ <div class="container-fluid pad0">
+ <div class="col-md-4 col-sm-3 mhgt0p"></div>
+ <div class="col-md-4 col-sm-6 pad0">
+ <!-- -->
+ <div id="wrapper" class="toggled f12p">
+  <!-- Core Skeleton : Side and Top Menu style="background-color:#fecc30;" -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+    <div align="center" class="sidebar-nav-profile">
+	 <div><img src="images\logo-flat.png" class="app-icon-s0"/></div><hr class="mtop13p"/>
+     <a href="#">
+	   <div class="sidebar-wrapper-img mtop25p"></div>
+	   <div align="center"><b>FirstName LastName</b></div>
+	   <div align="center" class="f11p font-grey"><b>Locality, Location, State, Country</b></div>
+     </a>
+    </div><hr class="mbot15p"/>
+    <li><a href="#" class="font-black"><i class="fa fa-dashboard" aria-hidden="true"></i>&nbsp;&nbsp;<span><b>Notifications</b></span></a></li>		
+    <li class="active"><a href="#" class="font-black"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;<span><b>Home</b></span></a></li>
+    <li><a href="#" class="font-black"><i class="fa fa-file-image-o" aria-hidden="true"></i>&nbsp;&nbsp;<span><b>My Gallery</b></span></a></li>
+	<li><a href="#" class="font-black"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;<span><b>Social Story</b></span></a></li>
+	<li><a href="#" class="font-black"><i class="fa fa-cogs" aria-hidden="true"></i>&nbsp;&nbsp;<span><b>Settings</b></span></a></li>
+	</ul>
+	<!-- class="font-red" class="font-navyBlue"  class="font-green"  class="font-yellow" class="font-blue" 
+	class="font-black" -->
+	</div>
+	<div id="page-content-wrapper"><!-- background-color:#e98600; -->
+	  <nav id="header_bot" class="navbar" style="background-color:#efeeee;margin-bottom:0px;border-radius:0px;">
+	   <div id="applogo-header">
+		
+		<a class="navbar-brand a-custom" style="padding:13px 15px;cursor:pointer;" onclick="javascript:sideWrapperToggle();">
+		  <span class="glyphicon glyphicon-align-justify font-black"></span>
+		</a>
+		
+		<div class="container-fluid pad0">
+		
+		  <div id="div_app_logo" class="col-md-8 col-sm-6 col-xs-10 mtop8p pad0">
+		    <div class="input-group">
+			   <input type="text" class="form-control" placeholder="Enter your Search"/>
+			   <div class="input-group-btn">
+			     <button class="btn btn-default"><i class="fa fa-search"></i>&nbsp;<b>Search</b></button>
+			   </div><!--/.input-group-btn -->
+			</div><!--/.input-group -->
+		  </div>
+		 
+	    </div>
+		
+       </div><!--/#applogo-header -->
+	 	
+      </nav>
+	  <div>
+	  <ul class="list-inline list-inline-grey">
+	  <li id="mlh-homepage-menulist-home" class="active" onclick="javascript:mlh_homepage_selMenu(this.id);"><a href="#">Home</a></li>
+	  <li id="mlh-homepage-menulist-mylocation" onclick="javascript:mlh_homepage_selMenu(this.id);"><a href="#">My Location</a></li>
+      <li id="mlh-homepage-menulist-newsfeed" onclick="javascript:mlh_homepage_selMenu(this.id);"><a href="#">Newsfeed</a></li>
+      <li id="mlh-homepage-menulist-mylocalhook" onclick="javascript:mlh_homepage_selMenu(this.id);"><a href="#">MyLocalHook</a></li>
+      <li id="mlh-homepage-menulist-socialstory" onclick="javascript:mlh_homepage_selMenu(this.id);"><a href="#">Social Story</a></li>
+      <li id="mlh-homepage-menulist-myusageAndEarnings" onclick="javascript:mlh_homepage_selMenu(this.id);"><a href="#">My Usage and My Earnings</a></li>
+      </ul> 
+      </div>
+	 <!-- Other Content ::: Start -->
+	 
+<!-- HOME ::: start -->
+<div id="mlh-homepage-menucontent-home" class="hide-block">
+<!-- HOME ::: content -->
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-6 pad0">
+<!-- -->
+<div class="box-menu box-tomato">
+<div class="box-menu-badge">99+</div>
+<div class="list-group">
+<div class="list-group-item">
+<div align="center"><i class="fa fa-3x fa-comments-o"></i></div>
+<div align="center" class="mtop15p"><b>Chat Message</b></div>
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+</div><!--/.box-menu -->
+<!-- -->
+</div><!--/.col-xs-6 -->
+<div class="col-xs-6 pad0">
+<!-- -->
+<div class="box-menu box-dodgerBlue">
+<div class="box-menu-badge">99+</div>
+<div class="list-group">
+<div class="list-group-item">
+<div align="center"><i class="fa fa-3x fa-user"></i></div>
+<div align="center" class="mtop15p"><b>Friend Requests</b></div>
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+</div><!--/.box-menu -->
+<!-- -->
+</div><!--/.col-xs-6 -->
+</div><!--/.row -->
+<style>
+
+</style>
+<div class="row">
+<div class="col-xs-6 pad0">
+<!-- -->
+<a href="app-calendar.html" style="text-decoration:none;">
+<div class="box-menu box-mediumSeaGreen">
+<div class="box-menu-badge">99+</div>
+<div class="list-group">
+<div class="list-group-item">
+<div align="center"><i class="fa fa-3x fa-calendar"></i></div>
+<div align="center" class="mtop15p"><b>Upcoming Events</b></div>
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+</div><!--/.box-menu -->
+</a>
+<!-- -->
+</div><!--/.col-xs-6 -->
+<div class="col-xs-6 pad0">
+<!-- -->
+<div class="box-menu box-seaBlue1">
+<div class="box-menu-badge">99+</div>
+<div class="list-group">
+<div class="list-group-item">
+<div align="center"><i class="fa fa-3x fa-headphones"></i></div>
+<div align="center" class="mtop15p"><b>Help Desk</b></div>
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+</div><!--/.box-menu -->
+<!-- -->
+</div><!--/.col-xs-6 -->
+</div><!--/.row -->
+</div><!--/.container-fluid -->
+<!-- HOME ::: content -->
+</div>
+<!-- HOME ::: end -->
+
+<!-- MYLOCATION ::: start -->
+<div id="mlh-homepage-menucontent-mylocation" class="hide-block">
+
+<!-- Mylocation Map ::: start -->
+<div class="list-group mbot0p">
+<div id="mlh-homepage-mylocation-map" class="list-group-item map-plot">
+
+</div><!--/#mlh-homepage-mylocation-map -->
+</div><!--/.list-group -->
+<!-- Mylocation Map ::: end -->
+
+<!-- Find what exists Around you ::: start -->
+<div class="list-group mbot0p">
+<div align="center" class="list-group-item bg-grey-lgt" 
+data-toggle="collapse" data-target="#mlh-homepage-mylocation-map-friendsAroundyou">
+<b>Find what exists around you</b><br/>
+<div id="map_latlng"></div>
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+<!-- Find what exists Around you ::: end -->
+
+
+<!-- Friends Around you ::: start -->
+<div class="list-group mbot0p">
+<div class="list-group-item bg-grey-lgt" 
+data-toggle="collapse" data-target="#mlh-homepage-mylocation-map-friendsAroundyou">
+<b>Friends
+<span class="pull-right">(0)&nbsp;
+<i class="fa fa-angle-double-down"></i>
+</span></b>
+</div><!--/.list-group-item -->
+<div id="mlh-homepage-mylocation-map-friendsAroundyou" class="collapse">
+<div class="list-group-item">
+
+
+</div><!--/.list-group-item -->
+</div><!--/.collapse -->
+</div><!--/.list-group -->
+<!-- Friends Around you ::: end -->
+
+
+<!-- Others Around you ::: start -->
+<div class="list-group mbot0p">
+<div class="list-group-item bg-grey-lgt" 
+data-toggle="collapse" data-target="#mlh-homepage-mylocation-map-othersAroundyou">
+<b>Others
+<span class="pull-right">(0)&nbsp;
+<i class="fa fa-angle-double-down"></i>
+</span></b>
+</div><!--/.list-group-item -->
+<div id="mlh-homepage-mylocation-map-othersAroundyou" class="collapse">
+<div class="list-group-item">
+
+
+</div><!--/.list-group-item -->
+</div><!--/.collapse -->
+</div><!--/.list-group -->
+<!-- Others Around you ::: end -->
+
+<!-- Services Around you ::: start -->
+<div class="list-group mbot0p">
+<div class="list-group-item bg-grey-lgt" 
+data-toggle="collapse" data-target="#mlh-homepage-mylocation-map-servicesAroundyou">
+<b>Services
+<span class="pull-right">(0)&nbsp;
+<i class="fa fa-angle-double-down"></i>
+</span></b>
+</div><!--/.list-group-item -->
+<div id="mlh-homepage-mylocation-map-servicesAroundyou" class="collapse">
+<div class="list-group-item">
+
+
+</div><!--/.list-group-item -->
+</div><!--/.collapse -->
+</div><!--/.list-group -->
+<!-- Services Around you ::: end -->
+
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+
+<div class="div-list-scroll mtop15p">
+<div class="list-group list-scroll">
+<div class="list-group-item list-scroll-item">
+
+<div>
+<b>Plug-in your Business to MyLocalHook</b>
+
+</div>
+
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+</div><!--/.div-list-scroll -->
+</div><!--/.col-xs-12 -->
+</div><!--/.row -->
+</div><!--/.container-fluid -->
+
+
+</div><!--/#mlh-homepage-menucontent-mylocation -->
+<!-- MYLOCATION ::: end -->
+
+<!-- NEWSFEED ::: start -->
+<div id="mlh-homepage-menucontent-newsfeed" class="hide-block">
+
+</div>
+<!-- NEWSFEED ::: end -->
+
+<!-- MYLOCALHOOK ::: start -->
+<div id="mlh-homepage-menucontent-mylocalhook" class="hide-block">
+
+</div>
+<!-- MYLOCALHOOK ::: end -->
+
+<!-- SOCIAL STORY ::: start -->
+<div id="mlh-homepage-menucontent-socialstory" class="hide-block">
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+
+<div class="div-list-scroll mtop15p">
+<div class="list-group list-scroll">
+<div class="list-group-item list-scroll-item">
+<div style="font-size:14px;">
+<b>Create a Union / Association</b><br/>
+</div>
+Create a professional Union / Association
+
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+
+<div class="list-group list-scroll">
+<div class="list-group-item list-scroll-item">
+<div style="font-size:14px;">
+<b>Create a political party</b><br/>
+</div>
+
+<div class="font-grey-mdm">
+<div>
+Build your Party Cadre in Nation<br/>
+</div>
+</div>
+
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+
+</div><!--/.div-list-scroll -->
+
+</div><!--/.col-xs-12 -->
+</div><!--/.row -->
+</div><!--/.container-fluid -->
+
+
+</div><!--/#mlh-homepage-menulist-socialstory -->
+<!-- SOCIAL STORY ::: end -->
+
+<!-- MY USAGE AND EARNINGS ::: start -->
+<div id="mlh-homepage-menucontent-myusageAndEarnings" class="hide-block">
+
+<div class="list-group">
+<div class="list-group-item bg-grey-lgt">
+<b>WORLD'S FIRST SOCIAL NETWORK </b><br/> which pays you as you use.
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+
+<div class="container-fluid"> 
+<div class="row"> 
+<div class="col-xs-12"> 
+<!-- -->
+<div class="list-group">
+<div class="list-group-item">
+
+
+<div class="container-fluid pad0"> 
+<div class="row"> 
+<div class="col-xs-6"> 
+
+<div>
+Invite your 10 Friends to activate the
+Account to earn Money based on your 
+App usage
+</div>
+
+</div><!--/.col-xs-6 -->
+<div class="col-xs-6"> 
+
+<div>
+<b>Your Referral Code:</b>
+</div>
+
+<div class="list-group mbot5p">
+<div class="list-group-item">
+<b>ehru35hk</b>
+</div>
+</div>
+
+<div>
+<button class="btn btn-success form-control">
+<b>Share</b>
+</button>
+</div>
+
+
+</div><!--/.col-xs-4 -->
+</div><!--/.row -->
+</div><!--/.container-fluid -->
+
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+<!-- -->
+</div><!--/.col-xs-12 -->
+</div><!--/.row -->
+<div class="row"> 
+
+<div class="col-xs-6">
+<!-- -->
+<div class="list-group mbot5p">
+<div align="center" class="list-group-item bg-grey-lgt pad5p">
+<b>&nbsp;Threshold Amount</b>
+</div><!--/.list-group-item -->
+<div align="center" class="list-group-item pad0">
+<h4>Rs.10,000</h4>
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+<!-- -->
+</div><!--/.col-xs-6 -->
+
+<div class="col-xs-6">
+<!-- -->
+<div class="list-group mbot5p">
+<div align="center" class="list-group-item bg-grey-lgt pad5p">
+<b>&nbsp;Your Current Earnings</b>
+</div><!--/.list-group-item -->
+<div align="center" class="list-group-item pad0">
+<h4>Rs.10,000</h4>
+</div><!--/.list-group-item -->
+</div><!--/.list-group -->
+<!-- -->
+</div><!--/.col-xs-6 -->
+
+</div><!--/.row -->
+
+
+</div><!--/.container-fluid -->
+ 
+</div>
+<!-- MY USAGE AND EARNINGS ::: end -->
+
+
+<script>
+var myLatLng;
+var map;
+var marker1;
+var marker2;
+var Android;
+function getLatAndLng(){
+ return JSON.parse(Android.getUserMobileGPSPosition());
+}
+function initializeMap() {
+ try {
+ myLatLng = {lat: 17.2975685, lng: 78.5601824 };
+ if(Android!==undefined){ 
+   myLatLng = getLatAndLng();
+   setInterval(function(){ myLatLng = getLatAndLng();moveBus(); 
+    document.getElementById("map_latlng").innerHTML=JSON.stringify(myLatLng);
+   },2000);
+ }
+ // GPS -> 17.2976125 78.5601421
+ // Google Map -> 17.2975607,78.5600908
+ // Diff : 0.0000518, 0.0000513
+ map = new google.maps.Map(document.getElementById('mlh-homepage-mylocation-map'), 
+ { zoom: 17, center: myLatLng });
+ marker1=new google.maps.Circle({
+            strokeColor: '#1e90ff',
+            strokeOpacity: 0.8,
+            strokeWeight: 0.5,
+            fillColor: '#1e90ff',
+            fillOpacity: 0.35,
+            map: map,
+            center: myLatLng,
+            radius: 80
+          });
+ marker2=new google.maps.Circle({
+            strokeColor: '#1e90ff',
+            strokeOpacity: 1,
+            strokeWeight: 1,
+            fillColor: '#1e90ff',
+            fillOpacity: 1,
+            map: map,
+            center: myLatLng,
+            radius: 5
+          });
+ //marker = new google.maps.Marker({ position: myLatLng, map: map });
+ marker1.setMap(map);
+ marker2.setMap(map);
+ } catch(err){ alert(err); }
+}
+
+function moveBus() {
+  try {
+  marker1.setCenter(myLatLng);
+  marker2.setCenter(myLatLng);
+  map.panTo( myLatLng );
+  } catch(err){ alert(err); }
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLYTwBBtnRDyew0qLZTjCJp0mgR5koP5A&callback=initializeMap"
+    async defer></script>
+
+
+
+	 
+	 <!-- Other Content ::: End -->
+	</div>
+</div>  
+ <!-- -->
+ </div>
+ <div class="col-md-4 col-sm-3"></div>
+ </div>
+ 
+</body>
+</html>
