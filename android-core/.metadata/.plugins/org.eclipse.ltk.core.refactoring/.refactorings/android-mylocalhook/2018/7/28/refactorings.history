@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename type &apos;anups.dun.util.CRUD_Contacts&apos; to &apos;CRUDContacts&apos;&#x0D;&#x0A;- Original project: &apos;android-mylocalhook&apos;&#x0D;&#x0A;- Original element: &apos;anups.dun.util.CRUD_Contacts&apos;&#x0D;&#x0A;- Renamed element: &apos;anups.dun.util.CRUDContacts&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;CRUD_Contacts&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;anups.dun.util{CRUD_Contacts.java[CRUD_Contacts" matchStrategy="1" name="CRUDContacts" qualified="false" references="true" similarDeclarations="false" stamp="1531419251642" textual="false" version="1.0"/>
-</session>

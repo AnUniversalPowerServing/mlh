@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;android-mylocalhook/res/layout/activity_googleactivity.xml&apos; to &apos;activity_googleads.xml&apos;" description="Rename resource &apos;activity_googleactivity.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/layout/activity_googleactivity.xml" name="activity_googleads.xml" stamp="1539153107918" updateReferences="true"/>
-</session>
